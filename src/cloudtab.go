@@ -42,6 +42,9 @@ import (
 //  Status
 // }
 
+// Mongo Help
+// mgo.Dial("server1.example.com,server2.example.com")
+
 type Server struct {
 	CMDBName         string               `json:"CMDBName"`
 	Function         string               `json:"Function"`
@@ -89,6 +92,23 @@ type Person struct {
 	Mail     string
 }
 
+func ErrorWithJSON(w http.ResponseWriter, message string, code int) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(code)
+	fmt.Fprintf(w, "{message: %q}", message)
+}
+
+func ResponseWithJSON(w http.ResponseWriter, json []byte, code int) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(code)
+	w.Write(json)
+}
+
 func main() {
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
 
 }
