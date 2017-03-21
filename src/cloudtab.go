@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gorilla/websocket"
+	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
@@ -110,5 +110,15 @@ func main() {
 		panic(err)
 	}
 	defer session.Close()
+	r := mux.NewRouter()
+	r.HandleFunc("/servers", getserversHandler).Methods("GET")
+	r.HandleFunc("/servers", postserversHandler).Methods("POST")
 
+	http.Handle("/", r)
+	http.ListenAndServe(":9010", nil)
 }
+
+// Function Get Server
+// Function Add Server
+// Function Remove Server
+// Function Update Server
