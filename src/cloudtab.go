@@ -111,14 +111,42 @@ func main() {
 	}
 	defer session.Close()
 	r := mux.NewRouter()
-	r.HandleFunc("/servers", getserversHandler).Methods("GET")
-	r.HandleFunc("/servers", postserversHandler).Methods("POST")
+	r.HandleFunc("/servers", getserversHandler(session)).Methods("GET")
+	r.HandleFunc("/servers", postserversHandler(session)).Methods("POST")
 
 	http.Handle("/", r)
-	http.ListenAndServe(":9010", nil)
+	http.ListenAndServe(":9010", r)
 }
 
 // Function Get Server
+func (s *mgo.Session) getserversHandler(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		session := s.Copy()
+		defer session.Close()
+
+		c := session.DB("store").C("servers")
+
+		var books []Book
+		err := c.Find(bson.M{}).All(&books)
+		if err != nil {
+			ErrorWithJSON(w, "Database error", http.StatusInternalServerError)
+			log.Println("Failed get all servers: ", err)
+			return
+		}
+
+		respBody, err := json.MarshalIndent(servers, "", "  ")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		ResponseWithJSON(w, respBody, http.StatusOK)
+	}
+}
+
 // Function Add Server
+func (s *mgo.Session) postserversHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
 // Function Remove Server
 // Function Update Server
