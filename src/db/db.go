@@ -4,7 +4,6 @@ import (
 	"gopkg.in/mgo.v2"
 	"log"
 	// "gopkg.in/mgo.v2/bson"
-	// "encoding/json"
 )
 
 type Server struct {
