@@ -1,5 +1,4 @@
 pkg/
 bin/
 source-env
-db/
 src/body.json
