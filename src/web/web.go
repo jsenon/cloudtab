@@ -66,44 +66,12 @@ func Index(res http.ResponseWriter, req *http.Request) {
 	// var rs Server
 	rs, err := db.GetAll()
 
-	data := struct {
-		ID           bson.ObjectId `json:"id" bson:"_id,omitempty"`
-		Title        string
-		CMDBName     string `json:"CMDBName" bson:"CMDBName"`
-		Function     string `json:"Function" bson:"Function"`
-		SerialNumber string `json:"SerialNumber" bson:"SerialNumber"`
-	}{
-		ID:           rs[0].ID,
-		Title:        "cloudtab",
-		CMDBName:     rs[0].CMDBName,
-		Function:     rs[0].Function,
-		SerialNumber: rs[0].SerialNumber,
-	}
+	// t := template.Must(template.New("tmpl").Parse(tmpl))
+	t, _ := template.ParseFiles("templates/index.html")
 
-	Render(res, "templates/index.html", data)
+	t.Execute(res, rs)
 
 	fmt.Println("err", err)
 	fmt.Println("rs", rs)
 
-	// for i := range rs {
-
-	// 	data := struct {
-	// 		Title        string
-	// 		CMDBName     string
-	// 		Function     string
-	// 		SerialNumber string
-	// 	}{
-	// 		Title:        "cloudtab",
-	// 		CMDBName:     rs[i].CMDBName,
-	// 		Function:     rs[i].Function,
-	// 		SerialNumber: rs[i].SerialNumber,
-	// 	}
-
-	// 	Render(res, "templates/index.html", data)
-	// }
-}
-
-func handleError(err error, message string, w http.ResponseWriter) {
-	w.WriteHeader(http.StatusInternalServerError)
-	w.Write([]byte(fmt.Sprintf(message, err)))
 }
