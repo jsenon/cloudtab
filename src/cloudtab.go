@@ -2,8 +2,8 @@ package main
 
 import (
 	"api"
-
 	"github.com/gorilla/mux"
+	"web"
 
 	"net/http"
 )
@@ -44,6 +44,7 @@ func main() {
 
 	r := mux.NewRouter()
 
+	r.HandleFunc("/index", web.Index)
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
 	r.HandleFunc("/servers", api.PostItem).Methods("POST")
