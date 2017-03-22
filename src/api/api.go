@@ -59,7 +59,7 @@ func GetAllItems(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	bs, err := json.Marshal(rs)
+	bs, err := json.MarshalIndent(rs, "", "    ")
 	if err != nil {
 		handleError(err, "Failed to load marshal data: %v", w)
 		return
