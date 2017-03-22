@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -11,7 +12,7 @@ type Server struct {
 	CMDBName         string               `json:"CMDBName"`
 	Function         string               `json:"Function"`
 	SerialNumber     string               `json:"SerialNumber"`
-	AssetCode        int                  `json:"Assetcode"`
+	AssetCode        int                  `json:"Assetcode" `
 	HardwareRows     []HardwareDefinition `json:"Hardwarerows"`
 	LocalisationRows []Localisation       `json:"Localisationrows"`
 	NetworksRows     []Networks           `json:"Networksrows"`
@@ -89,7 +90,7 @@ func GetOne(id string) (*Server, error) {
 	if err := collection().Find(bson.M{"_id": id}).One(&res); err != nil {
 		return nil, err
 	}
-
+	fmt.Println("res", res)
 	return &res, nil
 }
 

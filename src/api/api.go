@@ -12,7 +12,7 @@ import (
 )
 
 type Server struct {
-	ID               string               `json:"id" bson:"_id,omitempty"`
+	ID               bson.ObjectId        `json:"id" bson:"_id,omitempty"`
 	CMDBName         string               `json:"CMDBName"`
 	Function         string               `json:"Function"`
 	SerialNumber     string               `json:"SerialNumber"`
@@ -114,8 +114,12 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 func GetItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
+	fmt.Println("id", id)
 
 	rs, err := db.GetOne(id)
+	fmt.Println("rs", rs)
+	fmt.Println("err", err)
+
 	if err != nil {
 		handleError(err, "Failed to read database: %v", w)
 		return
