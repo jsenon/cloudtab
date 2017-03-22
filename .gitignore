@@ -4,3 +4,5 @@ source-env
 src/body.json
 db/
 db.tar.gz
+src/github.com/
+src/gopkg.in/

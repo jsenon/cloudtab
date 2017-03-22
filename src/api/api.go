@@ -6,7 +6,7 @@ import (
 	"db"
 	"encoding/json"
 	"fmt"
-	// "github.com/gorilla/mux"
+	"github.com/gorilla/mux"
 	// "strconv"
 )
 
@@ -99,10 +99,33 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-func DeleteItem() {
+func DeleteItem(w http.ResponseWriter, req *http.Request) {
+	vars := mux.Vars(req)
+	id := vars["id"]
 
+	if err := db.Remove(id); err != nil {
+		handleError(err, "Failed to remove item: %v", w)
+		return
+	}
+
+	w.Write([]byte("OK"))
 }
 
-func GetItems() {
+func GetItem(w http.ResponseWriter, req *http.Request) {
+	vars := mux.Vars(req)
+	id := vars["id"]
 
+	rs, err := db.GetOne(id)
+	if err != nil {
+		handleError(err, "Failed to read database: %v", w)
+		return
+	}
+
+	bs, err := json.Marshal(rs)
+	if err != nil {
+		handleError(err, "Failed to marshal data: %v", w)
+		return
+	}
+
+	w.Write(bs)
 }

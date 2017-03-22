@@ -2,8 +2,8 @@ package db
 
 import (
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 	"log"
-	// "gopkg.in/mgo.v2/bson"
 )
 
 type Server struct {
@@ -81,4 +81,18 @@ func GetAll() ([]Server, error) {
 
 func Save(item Server) error {
 	return collection().Insert(item)
+}
+
+func GetOne(id string) (*Server, error) {
+	res := Server{}
+
+	if err := collection().Find(bson.M{"_id": id}).One(&res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+func Remove(id string) error {
+	return collection().Remove(bson.M{"_id": id})
 }

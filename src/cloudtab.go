@@ -3,7 +3,6 @@ package main
 import (
 	"api"
 
-	"fmt"
 	"github.com/gorilla/mux"
 
 	"net/http"
@@ -48,8 +47,8 @@ func main() {
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
 	r.HandleFunc("/servers", api.PostItem).Methods("POST")
-	r.HandleFunc("/servers/{id}", api.DeleItem).Methods("DELETE")
-	r.HandleFunc("/servers/{id}", api.GetItems).Methods("GET")
+	r.HandleFunc("/servers/{id}", api.DeleteItem).Methods("DELETE")
+	r.HandleFunc("/servers/{id}", api.GetItem).Methods("GET")
 
 	http.ListenAndServe(":9010", r)
 }
