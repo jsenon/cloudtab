@@ -20,7 +20,7 @@ go build -o cloudtab
 ### Start
 
 ```sh
-docker run --name cloudtab-mongo -v /my/own/datadir:/data/db -d mongo:latest
+docker run --name cloudtab-mongo -v /my/own/datadir:/data/db -d -p 27017:27017 mongo:latest
 ./cloudtab 
 ```
 
