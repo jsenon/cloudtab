@@ -10,8 +10,8 @@ import (
 )
 
 // TO DO
-// Websocket Gorilla
-// Backend DB MongoDB
+// Package for struct JSON
+// Webserver
 
 // Struct JSON
 // Server{
@@ -41,31 +41,15 @@ import (
 //  Status
 // }
 
-// Mongo Help
-// mgo.Dial("server1.example.com,server2.example.com")
-
-func ErrorWithJSON(w http.ResponseWriter, message string, code int) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(code)
-	fmt.Fprintf(w, "{message: %q}", message)
-}
-
-func ResponseWithJSON(w http.ResponseWriter, json []byte, code int) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(code)
-	w.Write(json)
-}
-
 func main() {
 
 	r := mux.NewRouter()
+
+	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
-	r.HandleFunc("/servers", api.PostItems).Methods("POST")
+	r.HandleFunc("/servers", api.PostItem).Methods("POST")
+	r.HandleFunc("/servers/{id}", api.DeleItem).Methods("DELETE")
+	r.HandleFunc("/servers/{id}", api.GetItems).Methods("GET")
 
 	http.ListenAndServe(":9010", r)
 }
-
-// Function Get Server
-// Function Add Server
-// Function Remove Server
-// Function Update Server
