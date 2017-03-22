@@ -44,6 +44,7 @@
 							<table class="table">
 								<thead>
 									<tr>
+										<th>ID</th>
 										<th>CMDBName</th>
 										<th>Function</th>
 										<th>SerialNumber</th>
@@ -51,6 +52,10 @@
 								</thead>
 								<tbody>
 									<tr>
+
+										<td>
+											{{.ID.Hex}}
+										</td>
 										<td>
 											{{.CMDBName}}
 										</td>

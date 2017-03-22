@@ -7,7 +7,7 @@ import (
 )
 
 type Server struct {
-	ID               string               `json:"id" bson:"_id,omitempty"`
+	ID               bson.ObjectId        `json:"id" bson:"_id,omitempty"`
 	CMDBName         string               `json:"CMDBName"`
 	Function         string               `json:"Function"`
 	SerialNumber     string               `json:"SerialNumber"`

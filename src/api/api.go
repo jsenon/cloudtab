@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"gopkg.in/mgo.v2/bson"
 	// "strconv"
 )
 
@@ -84,13 +85,12 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	}
 	fmt.Println("server", server)
 
-	ID := server.ID
-	fmt.Println("ID", ID)
+	id := bson.NewObjectId()
 	Name := server.CMDBName
 	Function := server.Function
 	SerialNumber := server.SerialNumber
 
-	item := db.Server{ID: ID, CMDBName: Name, Function: Function, SerialNumber: SerialNumber}
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber}
 
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)

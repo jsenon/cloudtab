@@ -7,10 +7,11 @@ import (
 	"db"
 	// "encoding/json"
 	"fmt"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type Server struct {
-	ID               string               `json:"id" bson:"_id,omitempty"`
+	ID               bson.ObjectId        `json:"id" bson:"_id,omitempty"`
 	CMDBName         string               `json:"CMDBName"`
 	Function         string               `json:"Function"`
 	SerialNumber     string               `json:"SerialNumber"`
@@ -66,11 +67,13 @@ func Index(res http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
 
 	data := struct {
+		ID           bson.ObjectId `json:"id" bson:"_id,omitempty"`
 		Title        string
-		CMDBName     string
-		Function     string
-		SerialNumber string
+		CMDBName     string `json:"CMDBName" bson:"CMDBName"`
+		Function     string `json:"Function" bson:"Function"`
+		SerialNumber string `json:"SerialNumber" bson:"SerialNumber"`
 	}{
+		ID:           rs[0].ID,
 		Title:        "cloudtab",
 		CMDBName:     rs[0].CMDBName,
 		Function:     rs[0].Function,
