@@ -2,3 +2,4 @@ pkg/
 bin/
 source-env
 src/body.json
+db/
