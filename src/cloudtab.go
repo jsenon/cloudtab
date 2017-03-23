@@ -46,6 +46,8 @@ func main() {
 
 	r.HandleFunc("/index", web.Index)
 	r.HandleFunc("/send", web.Send)
+	r.HandleFunc("/delete", web.Delete)
+
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
 	r.HandleFunc("/servers", api.PostItem).Methods("POST")

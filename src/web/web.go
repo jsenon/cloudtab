@@ -48,3 +48,17 @@ func Send(res http.ResponseWriter, req *http.Request) {
 	// http redirect to index
 	http.Redirect(res, req, "/index", http.StatusSeeOther)
 }
+
+func Delete(res http.ResponseWriter, req *http.Request) {
+	var id string
+	req.ParseForm()
+
+	id = req.FormValue("id")
+
+	if err := db.Remove(id); err != nil {
+		// handleError(err, "Failed to remove item: %v", w)
+		return
+	}
+	// http redirect to index
+	http.Redirect(res, req, "/index", http.StatusSeeOther)
+}
