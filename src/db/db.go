@@ -87,7 +87,7 @@ func Save(item Server) error {
 func GetOne(id string) (*Server, error) {
 	res := Server{}
 
-	if err := collection().Find(bson.M{"_id": id}).One(&res); err != nil {
+	if err := collection().Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&res); err != nil {
 		return nil, err
 	}
 	fmt.Println("res", res)
@@ -95,5 +95,5 @@ func GetOne(id string) (*Server, error) {
 }
 
 func Remove(id string) error {
-	return collection().Remove(bson.M{"_id": id})
+	return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 }

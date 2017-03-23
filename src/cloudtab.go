@@ -45,6 +45,7 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/index", web.Index)
+	r.HandleFunc("/send", web.Send)
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
 	r.HandleFunc("/servers", api.PostItem).Methods("POST")
