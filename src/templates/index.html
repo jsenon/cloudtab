@@ -10,15 +10,11 @@
 		<link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css">
 		<style>
 
-      .table td, .table th { text-align: left; }
-      body {
-      text-shadow: none;
-      }
-      
-
-    </style>
-
-
+			.table td, .table th { text-align: left; }
+			body {
+			text-shadow: none;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -52,22 +48,22 @@
 								</thead>
 							{{range .}}
 								<tbody>
-										<tr>
-											
-											<td>
-												{{.ID.Hex}}
-											</td>
-											<td>
-												{{.CMDBName}}
-											</td>
-											<td>
-												{{.Function}}
-											</td>
-											<td>
-												{{.SerialNumber}}
-											</td>
-										</tr>
-									</tbody>
+									<tr>
+										
+										<td>
+											{{.ID.Hex}}
+										</td>
+										<td>
+											{{.CMDBName}}
+										</td>
+										<td>
+											{{.Function}}
+										</td>
+										<td>
+											{{.SerialNumber}}
+										</td>
+									</tr>
+								</tbody>
 							{{end}}
 							</table>
 						</div>
@@ -96,7 +92,6 @@
 							</p>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
