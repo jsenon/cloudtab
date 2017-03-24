@@ -8,16 +8,16 @@ import (
 )
 
 type Server struct {
-	ID               bson.ObjectId        `json:"id" bson:"_id,omitempty"`
-	CMDBName         string               `json:"CMDBName"`
-	Function         string               `json:"Function"`
-	SerialNumber     string               `json:"SerialNumber"`
-	AssetCode        int                  `json:"Assetcode" `
-	HardwareRows     []HardwareDefinition `json:"Hardwarerows"`
-	LocalisationRows []Localisation       `json:"Localisationrows"`
-	NetworksRows     []Networks           `json:"Networksrows"`
-	Remarks          string               `json:"Remarks"`
-	Status           string               `json:"Status"`
+	ID                 bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	CMDBName           string        `json:"CMDBName"`
+	Function           string        `json:"Function"`
+	SerialNumber       string        `json:"SerialNumber"`
+	AssetCode          string        `json:"Assetcode" `
+	HardwareDefinition `json:"Hardwarerows"`
+	Localisation       `json:"Localisationrows"`
+	Networking         []Networks `json:"Networksrows"`
+	Remarks            string     `json:"Remarks"`
+	Status             string     `json:"Status"`
 }
 
 type HardwareDefinition struct {
@@ -37,16 +37,16 @@ type Networks struct {
 	PatchPanel string `json:"Patchpanel"`
 	ServerPort string `json:"Serverport"`
 	Switch     string `json:"Switch"`
-	Vlan       int    `json:"Vlan"`
+	Vlan       string `json:"Vlan"`
 	MAC        string `json:"MAC"`
 }
 
 type Network struct {
-	CMDBName     string `json:"NCMDBName"`
-	Function     string `json:"NFunction"`
-	SerialNumber string `json:"NSerialNumber"`
-	AssetCode    int    `json:"NAssetCode"`
-	Rows         []Localisation
+	NCMDBName     string `json:"NCMDBName"`
+	NFunction     string `json:"NFunction"`
+	NSerialNumber string `json:"NSerialNumber"`
+	NAssetCode    int    `json:"NAssetCode"`
+	NRows         []Localisation
 }
 
 type Person struct {

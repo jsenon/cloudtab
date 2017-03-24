@@ -11,48 +11,6 @@ import (
 	// "strconv"
 )
 
-type Server struct {
-	ID               bson.ObjectId        `json:"id" bson:"_id,omitempty"`
-	CMDBName         string               `json:"CMDBName"`
-	Function         string               `json:"Function"`
-	SerialNumber     string               `json:"SerialNumber"`
-	AssetCode        int                  `json:"Assetcode"`
-	HardwareRows     []HardwareDefinition `json:"Hardwarerows"`
-	LocalisationRows []Localisation       `json:"Localisationrows"`
-	NetworksRows     []Networks           `json:"Networksrows"`
-	Remarks          string               `json:"Remarks"`
-	Status           string               `json:"Status"`
-}
-
-type HardwareDefinition struct {
-	Model string `json:"Model"`
-	CPU   string `json:"CPU"`
-	RAM   string `json:"RAM"`
-}
-
-type Localisation struct {
-	Room     string `json:"Room"`
-	Building string `json:"Building"`
-	Rack     string `json:"Rack"`
-}
-
-type Networks struct {
-	IpAddr     string `json:"Ipaddr"`
-	PatchPanel string `json:"Patchpanel"`
-	ServerPort string `json:"Serverport"`
-	Switch     string `json:"Switch"`
-	Vlan       int    `json:"Vlan"`
-	MAC        string `json:"MAC"`
-}
-
-type Network struct {
-	CMDBName     string `json:"NCMDBName"`
-	Function     string `json:"NFunction"`
-	SerialNumber string `json:"NSerialNumber"`
-	AssetCode    int    `json:"NAssetCode"`
-	Rows         []Localisation
-}
-
 func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
 	if err != nil {
@@ -76,9 +34,17 @@ func handleError(err error, message string, w http.ResponseWriter) {
 
 // PostItem saves an item (form data) into the database.
 func PostItem(w http.ResponseWriter, req *http.Request) {
-	var server Server
+	var server db.Server
+
 	decoder := json.NewDecoder(req.Body)
+
+	// debug, err := json.MarshalIndent(decoder, "", "    ")
+	// fmt.Println(" debug", debug)
+	// fmt.Println(" err", err)
+
 	errjson := decoder.Decode(&server)
+	fmt.Println("server", errjson)
+
 	if errjson != nil {
 		fmt.Println("Incorrect body")
 		return
@@ -90,10 +56,21 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Function := server.Function
 	SerialNumber := server.SerialNumber
 	AssetCode := server.AssetCode
-	// Model := server.HardwareRows.Model
+	Model := server.HardwareDefinition.Model
+	CPU := server.HardwareDefinition.CPU
+	RAM := server.HardwareDefinition.RAM
+	Room := server.Localisation.Room
+	Building := server.Localisation.Building
+	Rack := server.Localisation.Rack
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode}
+	IpAddr := server.Networking[0].IpAddr
+	PatchPanel := server.Networking[0].PatchPanel
+	ServerPort := server.Networking[0].ServerPort
+	Switch := server.Networking[0].Switch
+	Vlan := server.Networking[0].Vlan
+	MAC := server.Networking[0].MAC
 
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}}
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)
 		return

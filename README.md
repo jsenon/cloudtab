@@ -28,6 +28,11 @@ docker run --name cloudtab-mongo -v /my/own/datadir:/data/db -d -p 27017:27017 m
 
 Access through favorite web browser on http://YOURIP:YOURPORT ie http://127.0.0.1:9010
 
+Example POST API
+```sh
+curl -X POST  -H "Content-Type: application/json"  -d @body_example.jsonhttp://localhost:9010/servers
+```
+
 ### ToDo
 
 - [x] API

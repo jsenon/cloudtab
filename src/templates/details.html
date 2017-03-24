@@ -50,27 +50,31 @@
 							<h4>
 								Hardware Info
 							</h4>
-							<tr>
-								Model:
+							{{with .HardwareDefinition}}
+								<tr>
+								Model: {{.Model}}
 								</br>
-								CPU:
+								CPU: {{.CPU}}
 								</br>
-								RAM: 
+								RAM: {{.RAM}}
 								</br>
-							</tr>
+								</tr>
+							{{end}}
 							</br>
 							<h4>
 								Localization
 							</h4>
-							<tr>
-								Room: 
+							{{with .Localisation}}
+								<tr>
+								Room: {{.Room}}
 								</br>
-								Building: 
+								Building: {{.Building}}
 								</br>
-								Rack: 
+								Rack: {{.Rack}}
 								</br>
-							</tr>
-							</br>
+								</tr>
+								</br>
+							{{end}}
 							<h4>
 								Networks
 							</h4>

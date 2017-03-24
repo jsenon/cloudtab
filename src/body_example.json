@@ -1,17 +1,34 @@
 {
-	"CMDBName": "ServerTest98",
-	"Function": "A Testing Server",
-	"SerialNumber": "78",
-	"AssetCode": "123",
-	"HardwareDefinition": [{
+	"CMDBName": "ServerTest99",
+	"Function": "ATesting Server",
+	"SerialNumber": "79",
+	"AssetCode": "123fdfsdf",
+	"Hardwarerows": {
 		"Model": "DL380",
 		"CPU": "2,6",
 		"RAM": "768"
-	}],
-	"Localisation": [{
+	},
+	"Localisationrows": {
 		"Room": "K",
 		"Building": "M88",
 		"Rack": "m88adcs4"
+	},
+	"Networksrows": [{
+		"IpAddr": "abc",
+		"PatchPanel": "abc",
+		"ServerPort": "abc",
+		"Switch": "abc",
+		"Vlan": "abc",
+		"MAC": "abc"
+	},
+	{
+		"IpAddr": "abc",
+		"PatchPanel": "abc",
+		"ServerPort": "abc",
+		"Switch": "abc",
+		"Vlan": "abc",
+		"MAC": "abc"
+
 	}],
 	"Remarks": "MyRermarks",
 	"Status": "In Progress"
