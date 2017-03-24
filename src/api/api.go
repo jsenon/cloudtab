@@ -89,8 +89,10 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Name := server.CMDBName
 	Function := server.Function
 	SerialNumber := server.SerialNumber
+	AssetCode := server.AssetCode
+	// Model := server.HardwareRows.Model
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber}
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, Model: Model}
 
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)

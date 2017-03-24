@@ -1,5 +1,19 @@
 {
-	"CMDBName": "ServerTest12",
+	"CMDBName": "ServerTest98",
 	"Function": "A Testing Server",
-	"SerialNumber": "789876"
+	"SerialNumber": "78",
+	"AssetCode": "123",
+	"HardwareDefinition": {
+		"Model": "DL380",
+		"CPU": "2,6",
+		"RAM": "756",
+	},
+	"Localisation": {
+		"Room": "K",
+		"Building": "M88",
+		"Rack": "m88adcs4",
+	},
+	"Remarks": "MyRermarks",
+	"Status": "In Progress"
+	},
 }

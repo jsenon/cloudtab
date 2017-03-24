@@ -15,6 +15,9 @@ import (
 // Import CSV
 // Detail Select Column to show
 
+// TO FIX
+// Responsive details page view
+
 // Struct JSON
 // Server{
 // 	CMDBName
