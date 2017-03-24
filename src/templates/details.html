@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<!-- Font Awesome -->
+		<!--<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+		<link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css">
+		<style>
+
+			.table td, .table th { text-align: left; }
+			body {
+			text-shadow: none;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+
+					<div class="masthead clearfix">
+						<div class="inner">
+							<h3 class="masthead-brand"> cloudtab</h3>
+							<nav>
+								<ul class="nav masthead-nav">
+									<li class="active"><a href="/index">Home</a></li>
+									<li><a href="#">Features</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="inner cover">
+						<div class="col-md-6" style="text-align: left;" >
+							<h4>
+								Server Identification
+							</h4>
+							<tr>
+								ID: {{.ID.Hex}}</br>
+								NAME: {{.CMDBName}}</br>
+								Function: {{.Function}}</br>
+								SN: {{.SerialNumber}}</br>
+								AssetCode: {{.AssetCode}}</br>
+							</tr>
+							</br>
+							<h4>
+								Hardware Info
+							</h4>
+							<tr>
+								Model:
+								</br>
+								CPU:
+								</br>
+								RAM: 
+								</br>
+							</tr>
+							</br>
+							<h4>
+								Localization
+							</h4>
+							<tr>
+								Room: 
+								</br>
+								Building: 
+								</br>
+								Rack: 
+								</br>
+							</tr>
+							</br>
+							<h4>
+								Networks
+							</h4>
+							<tr>
+								IpAddr: 
+								</br>
+								PatchPanel: 
+								</br>
+								ServerPort: 
+								</br>
+								Switch:
+								</br>
+								Vlan:
+								</br>
+								MAC:
+								</br>
+							</tr>
+							</br>
+							<h4>
+								Others
+							</h4>
+							<tr>
+								Remarks: {{.Remarks}}
+								</br>
+								Status:  {{.Status}}
+								</br>
+							</tr>
+							</br>
+						</div>
+					</div>
+					<div class="mastfoot">
+						<div class="inner">
+							<p>
+							Made by somebody
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
