@@ -30,12 +30,12 @@ Access through favorite web browser on http://YOURIP:YOURPORT ie http://127.0.0.
 
 ### ToDo
 
-[x] API
-[] Package for struct JSON Server
-[x] Web part to view details
-[] Web part Update
-[] Import CSV
-[] Detail Select Column to show
+- [x] API
+- [ ] Package for struct JSON Server
+- [x] Web part to view details
+- [ ] Web part Update
+- [ ] Import CSV
+- [ ] Detail Select Column to show
 
 
 
