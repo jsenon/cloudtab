@@ -92,7 +92,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	AssetCode := server.AssetCode
 	// Model := server.HardwareRows.Model
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, Model: Model}
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode}
 
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)
@@ -119,8 +119,8 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("id", id)
 
 	rs, err := db.GetOne(id)
-	fmt.Println("rs", rs)
-	fmt.Println("err", err)
+	// fmt.Println("rs", rs)
+	// fmt.Println("err", err)
 
 	if err != nil {
 		handleError(err, "Failed to read database: %v", w)

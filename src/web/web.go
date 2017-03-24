@@ -25,7 +25,7 @@ func Index(res http.ResponseWriter, req *http.Request) {
 	t.Execute(res, rs)
 
 	fmt.Println("err", err)
-	fmt.Println("rs", rs)
+	// fmt.Println("rs", rs)
 }
 
 func Send(res http.ResponseWriter, req *http.Request) {
@@ -70,7 +70,7 @@ func Details(res http.ResponseWriter, req *http.Request) {
 	fmt.Println("id", id)
 
 	rs, err := db.GetOne(id)
-	fmt.Println("rs", rs)
+	// fmt.Println("rs", rs)
 	fmt.Println("err", err)
 	t, _ := template.ParseFiles("templates/details.html")
 	t.Execute(res, rs)

@@ -3,17 +3,16 @@
 	"Function": "A Testing Server",
 	"SerialNumber": "78",
 	"AssetCode": "123",
-	"HardwareDefinition": {
+	"HardwareDefinition": [{
 		"Model": "DL380",
 		"CPU": "2,6",
-		"RAM": "756",
-	},
-	"Localisation": {
+		"RAM": "768"
+	}],
+	"Localisation": [{
 		"Room": "K",
 		"Building": "M88",
-		"Rack": "m88adcs4",
-	},
+		"Rack": "m88adcs4"
+	}],
 	"Remarks": "MyRermarks",
 	"Status": "In Progress"
-	},
 }
