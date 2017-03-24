@@ -9,6 +9,7 @@ import (
 
 	// "encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -61,4 +62,16 @@ func Delete(res http.ResponseWriter, req *http.Request) {
 	}
 	// http redirect to index
 	http.Redirect(res, req, "/index", http.StatusSeeOther)
+}
+
+func Details(res http.ResponseWriter, req *http.Request) {
+	vars := mux.Vars(req)
+	id := vars["id"]
+	fmt.Println("id", id)
+
+	rs, err := db.GetOne(id)
+	fmt.Println("rs", rs)
+	fmt.Println("err", err)
+	t, _ := template.ParseFiles("templates/details.html")
+	t.Execute(res, rs)
 }

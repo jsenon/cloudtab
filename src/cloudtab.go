@@ -9,8 +9,11 @@ import (
 )
 
 // TO DO
-// Package for struct JSON
-// Webserver
+// Package for struct JSON Server
+// Web part to view details
+// Web part Update
+// Import CSV
+// Detail Select Column to show
 
 // Struct JSON
 // Server{
@@ -47,6 +50,7 @@ func main() {
 	r.HandleFunc("/index", web.Index)
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/delete", web.Delete)
+	r.HandleFunc("/details/{id}", web.Details)
 
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
