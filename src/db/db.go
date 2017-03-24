@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -90,7 +89,6 @@ func GetOne(id string) (*Server, error) {
 	if err := collection().Find(bson.M{"_id": bson.ObjectIdHex(id)}).One(&res); err != nil {
 		return nil, err
 	}
-	fmt.Println("res", res)
 	return &res, nil
 }
 

@@ -43,13 +43,12 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println(" err", err)
 
 	errjson := decoder.Decode(&server)
-	fmt.Println("server", errjson)
 
 	if errjson != nil {
 		fmt.Println("Incorrect body")
 		return
 	}
-	fmt.Println("server", server)
+	fmt.Println(server)
 
 	id := bson.NewObjectId()
 	Name := server.CMDBName
@@ -62,6 +61,8 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Room := server.Localisation.Room
 	Building := server.Localisation.Building
 	Rack := server.Localisation.Rack
+	Remarks := server.Remarks
+	Status := server.Status
 
 	IpAddr := server.Networking[0].IpAddr
 	PatchPanel := server.Networking[0].PatchPanel
@@ -70,7 +71,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Vlan := server.Networking[0].Vlan
 	MAC := server.Networking[0].MAC
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}}
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}, Remarks: Remarks, Status: Status}
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)
 		return

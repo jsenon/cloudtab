@@ -8,7 +8,6 @@ import (
 	"db"
 
 	// "encoding/json"
-	"fmt"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -18,14 +17,12 @@ import (
 func Index(res http.ResponseWriter, req *http.Request) {
 	// var rs Server
 	rs, err := db.GetAll()
-
-	// t := template.Must(template.New("tmpl").Parse(tmpl))
 	t, _ := template.ParseFiles("templates/index.html")
 
 	t.Execute(res, rs)
-
-	fmt.Println("err", err)
-	// fmt.Println("rs", rs)
+	if err != nil {
+		return
+	}
 }
 
 func Send(res http.ResponseWriter, req *http.Request) {
@@ -67,11 +64,12 @@ func Delete(res http.ResponseWriter, req *http.Request) {
 func Details(res http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
-	fmt.Println("id", id)
 
 	rs, err := db.GetOne(id)
+	if err != nil {
+		return
+	}
 	// fmt.Println("rs", rs)
-	fmt.Println("err", err)
 	t, _ := template.ParseFiles("templates/details.html")
 	t.Execute(res, rs)
 }
