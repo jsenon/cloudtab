@@ -83,6 +83,10 @@ func Save(item Server) error {
 	return collection().Insert(item)
 }
 
+func Update(item Networks) error {
+	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+}
+
 func GetOne(id string) (*Server, error) {
 	res := Server{}
 

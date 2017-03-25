@@ -48,7 +48,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 		fmt.Println("Incorrect body")
 		return
 	}
-	fmt.Println(server)
+	// fmt.Println(server)
 
 	id := bson.NewObjectId()
 	Name := server.CMDBName
@@ -64,18 +64,34 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Remarks := server.Remarks
 	Status := server.Status
 
-	IpAddr := server.Networking[0].IpAddr
-	PatchPanel := server.Networking[0].PatchPanel
-	ServerPort := server.Networking[0].ServerPort
-	Switch := server.Networking[0].Switch
-	Vlan := server.Networking[0].Vlan
-	MAC := server.Networking[0].MAC
+	// fmt.Println(len(server.Networking))
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}, Remarks: Remarks, Status: Status}
+	// IpAddr := server.Networking[0].IpAddr
+	// PatchPanel := server.Networking[0].PatchPanel
+	// ServerPort := server.Networking[0].ServerPort
+	// Switch := server.Networking[0].Switch
+	// Vlan := server.Networking[0].Vlan
+	// MAC := server.Networking[0].MAC
+
+	// item := db.Server{ID: id, CMDBName: Name, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}}
+
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Remarks: Remarks, Status: Status}
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)
 		return
 	}
+
+	// Idea is add static field and use loop for update array of networks
+	// Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}},
+
+	for _, net := range server.Networking {
+		fmt.Println(net)
+		if err := db.Update(item); err != nil {
+			handleError(err, "Failed to save data: %v", w)
+			return
+		}
+	}
+
 	w.Write([]byte("OK"))
 }
 
