@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div class="inner cover">
-						<div class="col-md-6" style="text-align: left;" >
+						<div class="col-md-10" style="text-align: left;" >
 							<h4>
 								Server Identification
 							</h4>
@@ -78,23 +78,38 @@
 							<h4>
 								Networks
 							</h4>
-							{{range .Networking}}
-							</br>
+							<table style="width:100%">
 							<tr>
-								IpAddr: {{.IpAddr}}
-								</br>
-								PatchPanel: {{.PatchPanel}}
-								</br>
-								ServerPort: {{.ServerPort}}
-								</br>
-								Switch: {{.Switch}}
-								</br>
-								Vlan: {{.Vlan}}
-								</br>
-								MAC: {{.MAC}}
-								</br>
-							{{end}}
+								<th> IP </th>
+								<th> Patch Panel </th>
+								<th> Server Port </th>
+								<th> Switch </th>
+								<th> Vlan </th>
+								<th> Mac </th>
 							</tr>
+							{{range .Networking}}
+							<tr>
+								<td>
+									{{.IpAddr}}
+								</td>
+								<td>
+									{{.PatchPanel}}
+								</td>
+								<td>
+									{{.ServerPort}}
+								</td>
+								<td>
+									{{.Switch}}
+								</td>
+								<td>
+									{{.Vlan}}
+								</td>
+								<td>
+									{{.MAC}}
+								</td>
+							</tr>
+							{{end}}
+							</table>
 							</br>
 							<h4>
 								Others
