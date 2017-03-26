@@ -57,11 +57,13 @@ curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/server
 ### ToDo
 
 - [x] API
-- [ ] Package for struct JSON Server
+- [x] Package for struct JSON Server
 - [x] Web part to view details
 - [ ] Web part Update
 - [ ] Import CSV
 - [ ] Detail Select Column to show
+- [ ] Unique fields in db
+- [x] Store multiple networks per asset
 
 
 
