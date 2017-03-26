@@ -78,7 +78,8 @@
 							<h4>
 								Networks
 							</h4>
-							{{with .Networking}}
+							{{range .Networking}}
+							</br>
 							<tr>
 								IpAddr: {{.IpAddr}}
 								</br>
