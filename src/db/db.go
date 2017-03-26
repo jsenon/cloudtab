@@ -85,6 +85,7 @@ func Save(item Server) error {
 }
 
 func Update(key string, item string, values Networks) error {
+	// Func ONLY available for []network{} collection
 	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 	// db.items.updateOne({cmdbname:"ServerTest99"},{$addToSet:{"networking": [ { "ipaddr" : "abcd", "patchpanel" : "abcd", "serverport" : "abcd", "switch" : "abcd", "vlan" : "abcd", "mac" : "abcdefg" } ]}})
 	_, err := collection().Upsert(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$addToSet": bson.M{item: values}})
