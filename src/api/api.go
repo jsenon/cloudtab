@@ -51,6 +51,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println(server)
 
 	id := bson.NewObjectId()
+	ref := id.Hex()
 	Name := server.CMDBName
 	Function := server.Function
 	SerialNumber := server.SerialNumber
@@ -63,8 +64,6 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Rack := server.Localisation.Rack
 	Remarks := server.Remarks
 	Status := server.Status
-
-	// fmt.Println(len(server.Networking))
 
 	// IpAddr := server.Networking[0].IpAddr
 	// PatchPanel := server.Networking[0].PatchPanel
@@ -83,10 +82,14 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 
 	// Idea is add static field and use loop for update array of networks
 	// Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}},
+	var collec string
+	collec = "networking"
+	fmt.Println(server.Networking)
 
 	for _, net := range server.Networking {
 		fmt.Println(net)
-		if err := db.Update(item); err != nil {
+		// Launch update with id = id
+		if err := db.Update(ref, collec, net); err != nil {
 			handleError(err, "Failed to save data: %v", w)
 			return
 		}

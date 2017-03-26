@@ -22,12 +22,12 @@
 		"MAC": "abc"
 	},
 	{
-		"IpAddr": "abc",
-		"PatchPanel": "abc",
-		"ServerPort": "abc",
-		"Switch": "abc",
-		"Vlan": "abc",
-		"MAC": "abc"
+		"IpAddr": "def",
+		"PatchPanel": "def",
+		"ServerPort": "def",
+		"Switch": "def",
+		"Vlan": "def",
+		"MAC": "def"
 
 	}],
 	"Remarks": "MyRermarks",

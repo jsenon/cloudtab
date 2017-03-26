@@ -78,19 +78,21 @@
 							<h4>
 								Networks
 							</h4>
+							{{with .Networking}}
 							<tr>
-								IpAddr: 
+								IpAddr: {{.IpAddr}}
 								</br>
-								PatchPanel: 
+								PatchPanel: {{.PatchPanel}}
 								</br>
-								ServerPort: 
+								ServerPort: {{.ServerPort}}
 								</br>
-								Switch:
+								Switch: {{.Switch}}
 								</br>
-								Vlan:
+								Vlan: {{.Vlan}}
 								</br>
-								MAC:
+								MAC: {{.MAC}}
 								</br>
+							{{end}}
 							</tr>
 							</br>
 							<h4>

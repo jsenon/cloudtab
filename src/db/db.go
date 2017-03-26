@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -83,8 +84,12 @@ func Save(item Server) error {
 	return collection().Insert(item)
 }
 
-func Update(item Networks) error {
+func Update(key string, item string, values Networks) error {
 	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+	// db.items.updateOne({cmdbname:"ServerTest99"},{$addToSet:{"networking": [ { "ipaddr" : "abcd", "patchpanel" : "abcd", "serverport" : "abcd", "switch" : "abcd", "vlan" : "abcd", "mac" : "abcdefg" } ]}})
+	_, err := collection().Upsert(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$addToSet": bson.M{item: values}})
+	fmt.Println(err, key, bson.ObjectIdHex(key), item, values)
+	return err
 }
 
 func GetOne(id string) (*Server, error) {
