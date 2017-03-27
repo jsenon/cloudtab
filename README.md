@@ -65,6 +65,8 @@ curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/server
 - [ ] Detail Select Column to show
 - [ ] Unique fields in db
 - [x] Store multiple networks per asset
+- [ ] Authentication
+- [ ] Jwt implementation
 
 
 
