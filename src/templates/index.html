@@ -2,13 +2,30 @@
 <html>
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css">
+	
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
-		<!-- Font Awesome -->
-		<!--<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+
+<!-- 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+ -->
+		<script>
+		$("input:checkbox:not(:checked)").each(function() {
+		var column = "table ." + $(this).attr("name");
+		$(column).hide();
+		});
+
+		$("input:checkbox").click(function(){
+		var column = "table ." + $(this).attr("name");
+		$(column).toggle();
+		});
+		
+		</script>
 
 		<style type="text/css">
 
@@ -16,106 +33,98 @@
 			body {
 			text-shadow: none;
 			}
+
+
 			
 		
 		</style>
 
-		<script type="text/javascript">
-			
-		</script>
+		
+
+
+		
 
 
 	</head>
 	<body>
+		<div class="container">
 
-		<div class="site-wrapper">
-			<div class="site-wrapper-inner">
-				<div class="cover-container">
-
-					<div class="masthead clearfix">
-						<div class="inner">
-							<h3 class="masthead-brand"> cloudtab</h3>
-							<nav>
-								<ul class="nav masthead-nav">
-									<li class="active"><a href="/index">Home</a></li>
-									<li><a href="#">Features</a></li>
-									<li><a href="#">Contact</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-
-					<div class="inner cover">
-
+			<nav class="nav nav-pills flex-column flex-sm-row">
+				<a class="flex-sm-fill text-sm-center nav-link active" href="/index">Home</a>
+				<a class="flex-sm-fill text-sm-center nav-link" href="#">Features</a>
+				<a class="flex-sm-fill text-sm-center nav-link" href="#">Contact</a>
+				<a class="flex-sm-fill text-sm-center nav-link disabled" href="#">Disabled</a>
+			</nav>
 						
+			<br>
 
-						<div class="col-md-10">
-							<table>
-								<thead>
-										<tr>
-											<th>ID</th>
-											<th>Name</th>
-											<th>Function</th>
-											<th>SerialNumber</th>
-											<th>AssetCode</th>
-											<th>Model</th>
-											<th>CPU</th>
-											<th>RAM</th>
-											<th>Room</th>
-											<th>Building</th>
-											<th>Rack</th>
-											<th>Remarks</th>
-											<th>Status</th>
 
-										</tr>
-								</thead>
-							{{range .}}
-								<tbody>
-									<tr>
-										<td>
-											<a href="/details/{{.ID.Hex}}">
-											{{.ID.Hex}}
-											</a>
-										</td>
-										<td class="ui-table-priority-1">
-											{{.CMDBName}}
-										</td>
-										<td>
-											{{.Function}}
-										</td>
-										<td>
-											{{.SerialNumber}}
-										</td>
-									</tr>
-								</tbody>
-							{{end}}
-							</table>
-						</div>
-					</div>
+<input type="checkbox" value="1" name="Name" checked="checked">Name
+<input type="checkbox" value="1" name="Func" checked="checked">Func
 
-					<div>
-						<form action="/send" method="POST" accept-charset="UTF-8" novalidate>
-							<input id="CMDBName" placeholder="Enter your CMDB ServerName" type="text" name="CMDBName" class="form-control">
-							<input  id="Function" placeholder="Enter your Function"  type="text" name="Function" class="form-control">
-							<input id="SerialNumber" placeholder="Enter your SerialNumber" type="text" name="SerialNumber" class="form-control">
-							<input class="btn btn-lg btn-primary" type="submit" value="Register">
-						</form>
-					</div>
+					<table  >
+						<thead>
+								<tr>
+									<th>ID</th>
+									<th class="Name">Name</th>
+									<th class="Func">Function</th>
+									<th >SerialNumber</th>
+									<th >AssetCode</th>
+									<th >Model</th>
+									<th >CPU</th>
+									<th >RAM</th>
+									<th >Room</th>
+									<th >Building</th>
+									<th >Rack</th>
+									<th>Remarks</th>
+									<th>Status</th>
 
-					<div>
-						<form action="/delete" method="POST" accept-charset="UTF-8" novalidate>
-							<input id="id" placeholder="Enter ID for Deletion" type="text" name="id" class="form-control">
-							<input class="btn btn-lg btn-danger" type="submit" value="Delete">
-						</form>
-					</div>
+								</tr>
+						</thead>
+					{{range .}}
+						<tbody>
+							<tr>
+								<td >
+									<a href="/details/{{.ID.Hex}}">
+									{{.ID.Hex}}
+									</a>
+								</td>
+								<td class="Name">
+									{{.CMDBName}}
+								</td>
+								<td>
+									{{.Function}}
+								</td>
+								<td>
+									{{.SerialNumber}}
+								</td>
+							</tr>
+						</tbody>
+					{{end}}
+					</table>
+			</br>
 
-					<div class="mastfoot">
-						<div class="inner">
-							<p>
-							Made by somebody
-							</p>
-						</div>
-					</div>
+			<div style="width: 30%">
+				<form action="/send" method="POST" accept-charset="UTF-8" novalidate>
+					<input id="CMDBName" placeholder="Enter your CMDB ServerName" type="text" name="CMDBName" class="form-control">
+					<input  id="Function" placeholder="Enter your Function"  type="text" name="Function" class="form-control">
+					<input id="SerialNumber" placeholder="Enter your SerialNumber" type="text" name="SerialNumber" class="form-control">
+					<input class="btn btn-lg btn-primary" type="submit" value="Register">
+				</form>
+			</div></br>
+
+			<div style="width: 30%">
+				<form action="/delete" method="POST" accept-charset="UTF-8" novalidate>
+					<input id="id" placeholder="Enter ID for Deletion" type="text" name="id" class="form-control">
+					<input class="btn btn-lg btn-danger" type="submit" value="Delete">
+				</form>
+			</div>
+
+			<div class="mastfoot">
+				<div class="inner">
+					<p>
+					Made by somebody
+					</p>
 				</div>
 			</div>
 		</div>
