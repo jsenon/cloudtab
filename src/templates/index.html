@@ -1,73 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	
-
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-		<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
-
-<!-- 		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
- -->
 		<script>
-		$("input:checkbox:not(:checked)").each(function() {
-		var column = "table ." + $(this).attr("name");
-		$(column).hide();
-		});
-
-		$("input:checkbox").click(function(){
-		var column = "table ." + $(this).attr("name");
-		$(column).toggle();
-		});
 		
 		</script>
 
 		<style type="text/css">
 
 			/*.table td, .table th { text-align: left; }*/
-			body {
-			text-shadow: none;
-			}
-
-
-			
+	
+		
 		
 		</style>
-
-		
-
-
-		
-
 
 	</head>
 	<body>
 		<div class="container">
-
-			<nav class="nav nav-pills flex-column flex-sm-row">
-				<a class="flex-sm-fill text-sm-center nav-link active" href="/index">Home</a>
-				<a class="flex-sm-fill text-sm-center nav-link" href="#">Features</a>
-				<a class="flex-sm-fill text-sm-center nav-link" href="#">Contact</a>
-				<a class="flex-sm-fill text-sm-center nav-link disabled" href="#">Disabled</a>
-			</nav>
-						
-			<br>
-
-
-<input type="checkbox" value="1" name="Name" checked="checked">Name
-<input type="checkbox" value="1" name="Func" checked="checked">Func
-
-					<table  >
+				<ul class="nav nav-pills">
+					<li class="nav-item">
+						<a class="nav-link active" href="/index">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"  href="#">Features</a>
+					</li>
+					<li>
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+					<li>
+						<a class="nav-link disable" href="#">Disabled</a>
+					</li>
+				</ul>
+			</br>		
+			<div class="starter-template">
+					<h1 class="uk-heading-large">CloudTab</h1>
+					<p class="lead">Welcome to CloudTab, A simple CMDB</p>
+			</div>
+			</br>
+            <div >
+            	<div >
+					<table class="table table-sm table-responsive"  >
 						<thead>
 								<tr>
 									<th>ID</th>
-									<th class="Name">Name</th>
-									<th class="Func">Function</th>
+									<th>Name</th>
+									<th>Function</th>
 									<th >SerialNumber</th>
 									<th >AssetCode</th>
 									<th >Model</th>
@@ -89,7 +72,7 @@
 									{{.ID.Hex}}
 									</a>
 								</td>
-								<td class="Name">
+								<td>
 									{{.CMDBName}}
 								</td>
 								<td>
@@ -102,31 +85,39 @@
 						</tbody>
 					{{end}}
 					</table>
-			</br>
-
-			<div style="width: 30%">
-				<form action="/send" method="POST" accept-charset="UTF-8" novalidate>
-					<input id="CMDBName" placeholder="Enter your CMDB ServerName" type="text" name="CMDBName" class="form-control">
-					<input  id="Function" placeholder="Enter your Function"  type="text" name="Function" class="form-control">
-					<input id="SerialNumber" placeholder="Enter your SerialNumber" type="text" name="SerialNumber" class="form-control">
-					<input class="btn btn-lg btn-primary" type="submit" value="Register">
-				</form>
-			</div></br>
-
-			<div style="width: 30%">
-				<form action="/delete" method="POST" accept-charset="UTF-8" novalidate>
-					<input id="id" placeholder="Enter ID for Deletion" type="text" name="id" class="form-control">
-					<input class="btn btn-lg btn-danger" type="submit" value="Delete">
-				</form>
-			</div>
-
-			<div class="mastfoot">
-				<div class="inner">
-					<p>
-					Made by somebody
-					</p>
 				</div>
 			</div>
+			</br>
+
+			<div class="row">
+
+				<div class="col-6 col-md-4">
+					<form action="/send" method="POST" accept-charset="UTF-8" novalidate>
+						<input id="CMDBName" placeholder="Enter your CMDB ServerName" type="text" name="CMDBName" class="form-control">
+						<input  id="Function" placeholder="Enter your Function"  type="text" name="Function" class="form-control">
+						<input id="SerialNumber" placeholder="Enter your SerialNumber" type="text" name="SerialNumber" class="form-control">
+						<input class="btn btn-lg btn-primary" type="submit" value="Register">
+					</form>
+					</br>
+				</div>
+				<div class="col-6 col-md-4">
+
+					<form action="/delete" method="POST" accept-charset="UTF-8" novalidate>
+						<input id="id" placeholder="Enter ID for Deletion" type="text" name="id" class="form-control">
+						<input class="btn btn-lg btn-danger" type="submit" value="Delete">
+					</form>
+					</br>
+				</div>
+
+			</div>
+
+			<footer class="footer">
+	      		<div class="container">
+	        		<span class="text-muted">Made by Somebody.</span>
+	      		</div>
+   			</footer>
+
+
 		</div>
 	</body>
 </html>
