@@ -8,11 +8,37 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+		<!-- Latest compiled and minified Locales -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+
 		<script>
 		
 		</script>
 
 		<style type="text/css">
+		.fixed-table-container {
+			border-style:none;
+		}
+		.pull-right {
+		    float: right!important;
+		}
+		.glyphicon-th:before {
+		    content: "\e011";
+		}
+		.icon-th{
+			
+		}
+		.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+		    background-color: #fff;
+		}
+		.btn-default, .btn-default, .btn-default, .btn-default.active, .open>.dropdown-toggle.btn-default {
+		    background-color: #fff;
+		} 
 
 			/*.table td, .table th { text-align: left; }*/
 	
@@ -43,14 +69,25 @@
 					<p class="lead">Welcome to CloudTab, A simple CMDB</p>
 			</div>
 			</br>
-            <div >
-            	<div >
-					<table class="table table-sm table-responsive"  >
+			::before
+					<table id="table" class="table table-sm table-responsive table-no-bordered" data-sort-name="name" data-sort-order="name" data-toggle="table" data-show-columns="true">
 						<thead>
 								<tr>
-									<th>ID</th>
-									<th>Name</th>
-									<th>Function</th>
+									<th style data-field="id" tabindex="0">
+									<div class="th-inner sortable both">
+									ID
+									</div>
+									</th>
+									<th style data-field="name" tabindex="0">
+									<div class="th-inner sortable both desc">
+									Name
+									</th>
+									</div>
+									<th style data-field="func" tabindex="0">
+									<div class="th-inner sortable both">
+									Function
+									</th>
+									</div>
 									<th >SerialNumber</th>
 									<th >AssetCode</th>
 									<th >Model</th>
@@ -85,8 +122,7 @@
 						</tbody>
 					{{end}}
 					</table>
-				</div>
-			</div>
+					::after
 			</br>
 
 			<div class="row">
