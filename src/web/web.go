@@ -73,3 +73,10 @@ func Details(res http.ResponseWriter, req *http.Request) {
 	t, _ := template.ParseFiles("templates/details.html")
 	t.Execute(res, rs)
 }
+
+func Login(res http.ResponseWriter, req *http.Request) {
+	t, _ := template.ParseFiles("templates/login.html")
+
+	t.Execute(res, req)
+
+}

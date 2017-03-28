@@ -1,137 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
-		<!-- Font Awesome -->
-		<!--<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
-		<link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css">
-		<style>
+		
 
-			.table td, .table th { text-align: left; }
+		<style>
+			.table td, .table th { 
+				text-align: left; 
+			}
 			body {
 			text-shadow: none;
+			font-size: 12px;
+			}
+
+			.btn {
+				font-size: 12px;
+			}
+			.dropdown-menu{
+			    font-size: 12px;
+
+			}
+			.form-control {
+				font-size: 12px;
 			}
 		</style>
 	</head>
+
 	<body>
+		<div class="container">
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link active" href="/index">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"  href="#">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+			</ul>
+			</br>
 
-		<div class="site-wrapper">
-			<div class="site-wrapper-inner">
-				<div class="cover-container">
-
-					<div class="masthead clearfix">
-						<div class="inner">
-							<h3 class="masthead-brand"> cloudtab</h3>
-							<nav>
-								<ul class="nav masthead-nav">
-									<li class="active"><a href="/index">Home</a></li>
-									<li><a href="#">Features</a></li>
-									<li><a href="#">Contact</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-					<div class="inner cover">
-						<div class="col-md-10" style="text-align: left;" >
-							<h4>
-								Server Identification
-							</h4>
-							<tr>
-								ID: {{.ID.Hex}}</br>
-								NAME: {{.CMDBName}}</br>
-								Function: {{.Function}}</br>
-								SN: {{.SerialNumber}}</br>
-								AssetCode: {{.AssetCode}}</br>
-							</tr>
-							</br>
-							<h4>
-								Hardware Info
-							</h4>
-							{{with .HardwareDefinition}}
-								<tr>
-								Model: {{.Model}}
-								</br>
-								CPU: {{.CPU}}
-								</br>
-								RAM: {{.RAM}}
-								</br>
-								</tr>
-							{{end}}
-							</br>
-							<h4>
-								Localization
-							</h4>
-							{{with .Localisation}}
-								<tr>
-								Room: {{.Room}}
-								</br>
-								Building: {{.Building}}
-								</br>
-								Rack: {{.Rack}}
-								</br>
-								</tr>
-								</br>
-							{{end}}
-							<h4>
-								Networks
-							</h4>
-							<table style="width:100%">
-							<tr>
-								<th> IP </th>
-								<th> Patch Panel </th>
-								<th> Server Port </th>
-								<th> Switch </th>
-								<th> Vlan </th>
-								<th> Mac </th>
-							</tr>
-							{{range .Networking}}
-							<tr>
-								<td>
-									{{.IpAddr}}
-								</td>
-								<td>
-									{{.PatchPanel}}
-								</td>
-								<td>
-									{{.ServerPort}}
-								</td>
-								<td>
-									{{.Switch}}
-								</td>
-								<td>
-									{{.Vlan}}
-								</td>
-								<td>
-									{{.MAC}}
-								</td>
-							</tr>
-							{{end}}
-							</table>
-							</br>
-							<h4>
-								Others
-							</h4>
-							<tr>
-								Remarks: {{.Remarks}}
-								</br>
-								Status:  {{.Status}}
-								</br>
-							</tr>
-							</br>
-						</div>
-					</div>
-					<div class="mastfoot">
-						<div class="inner">
-							<p>
-							Made by somebody
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="col-md-6" style="text-align: left;" >
+				<h4>
+					Server Identification
+				</h4>
+				<tr>
+					ID: {{.ID.Hex}}</br>
+					NAME: {{.CMDBName}}</br>
+					Function: {{.Function}}</br>
+					SN: {{.SerialNumber}}</br>
+					AssetCode: {{.AssetCode}}</br>
+				</tr>
+				</br>
+				<h4>
+					Hardware Info
+				</h4>
+				{{with .HardwareDefinition}}
+					<tr>
+					Model: {{.Model}}
+					</br>
+					CPU: {{.CPU}}
+					</br>
+					RAM: {{.RAM}}
+					</br>
+					</tr>
+				{{end}}
+				</br>
+				<h4>
+					Localization
+				</h4>
+				{{with .Localisation}}
+					<tr>
+					Room: {{.Room}}
+					</br>
+					Building: {{.Building}}
+					</br>
+					Rack: {{.Rack}}
+					</br>
+					</tr>
+					</br>
+				{{end}}
 			</div>
-		</div>
+			<div class="col-md-10" style="text-align: left;" >
+				<h4>
+					Networks
+				</h4>
+
+				<table style="width:100%">
+				<tr>
+					<th> IP </th>
+					<th> Patch Panel </th>
+					<th> Server Port </th>
+					<th> Switch </th>
+					<th> Vlan </th>
+					<th> Mac </th>
+				</tr>
+				{{range .Networking}}
+				<tr>
+					<td>
+						{{.IpAddr}}
+					</td>
+					<td>
+						{{.PatchPanel}}
+					</td>
+					<td>
+						{{.ServerPort}}
+					</td>
+					<td>
+						{{.Switch}}
+					</td>
+					<td>
+						{{.Vlan}}
+					</td>
+					<td>
+						{{.MAC}}
+					</td>
+				</tr>
+				{{end}}
+				</table>
+				</br>
+			</div>
+			<div class="col-md-6" style="text-align: left;" >
+				<h4>
+					Others
+				</h4>
+				<tr>
+					Remarks: {{.Remarks}}
+					</br>
+					Status:  {{.Status}}
+					</br>
+				</tr>
+				</br>
+			</div>
+			<footer class="footer">
+	      		<div class="container">
+	        		<span class="text-muted">Made by Somebody.</span>
+	      		</div>
+   			</footer>
+		</div>	
 	</body>
 </html>

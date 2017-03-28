@@ -8,59 +8,56 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-		<!-- Latest compiled and minified Locales -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<!-- <script type="text/javascript">
+		$(document).ready(function() {
+		$('#example').DataTable( {
+			"searching": false
+			} );
+		} );
+		</script> -->
 
-
-		<script>
-		
-		</script>
+		<!-- <script src=//code.jquery.com/jquery-1.12.4.js></script>
+		<script src=https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js></script>
+		<script src=https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js></script>
+		<link rel="stylesheet" type="text/css" href=//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css></script>
+		<link rel="stylesheet" type="text/css" href=https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css></script> -->
 
 		<style type="text/css">
-		.fixed-table-container {
-			border-style:none;
+		
+		.table {
+			    margin-top: 1rem;
 		}
-		.pull-right {
-		    float: right!important;
+		body {
+			font-size: 12px;
 		}
-		.glyphicon-th:before {
-		    content: "\e011";
-		}
-		.icon-th{
-			
-		}
-		.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
-		    background-color: #fff;
-		}
-		.btn-default, .btn-default, .btn-default, .btn-default.active, .open>.dropdown-toggle.btn-default {
-		    background-color: #fff;
-		} 
 
-			/*.table td, .table th { text-align: left; }*/
-	
-		
-		
+		.btn {
+			font-size: 12px;
+		}
+		.dropdown-menu{
+		    font-size: 12px;
+
+		}
+		.form-control {
+			font-size: 12px;
+		}
 		</style>
-
 	</head>
+
 	<body>
 		<div class="container">
-				<ul class="nav nav-pills">
+				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link active" href="/index">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link"  href="#">Features</a>
 					</li>
-					<li>
+					<li class="nav-item">
 						<a class="nav-link" href="#">Contact</a>
 					</li>
-					<li>
-						<a class="nav-link disable" href="#">Disabled</a>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
 					</li>
 				</ul>
 			</br>		
@@ -69,25 +66,25 @@
 					<p class="lead">Welcome to CloudTab, A simple CMDB</p>
 			</div>
 			</br>
-			::before
-					<table id="table" class="table table-sm table-responsive table-no-bordered" data-sort-name="name" data-sort-order="name" data-toggle="table" data-show-columns="true">
+			
+					<table class="table table-hover">
 						<thead>
 								<tr>
-									<th style data-field="id" tabindex="0">
-									<div class="th-inner sortable both">
+									<th >
+									<!-- <div class="th-inner sortable both"> -->
 									ID
-									</div>
+									<!-- </div> -->
 									</th>
-									<th style data-field="name" tabindex="0">
-									<div class="th-inner sortable both desc">
+									<th >
+									<!-- <div class="th-inner sortable both desc"> -->
 									Name
 									</th>
-									</div>
-									<th style data-field="func" tabindex="0">
-									<div class="th-inner sortable both">
+									<!-- </div> -->
+									<th >
+									<!-- <div class="th-inner sortable both"> -->
 									Function
 									</th>
-									</div>
+									<!-- </div> -->
 									<th >SerialNumber</th>
 									<th >AssetCode</th>
 									<th >Model</th>
@@ -96,14 +93,16 @@
 									<th >Room</th>
 									<th >Building</th>
 									<th >Rack</th>
-									<th>Remarks</th>
-									<th>Status</th>
+									<th >Remarks</th>
+									<th >Status</th>
 
 								</tr>
 						</thead>
-					{{range .}}
+						{{range .}}
+
 						<tbody>
 							<tr>
+
 								<td >
 									<a href="/details/{{.ID.Hex}}">
 									{{.ID.Hex}}
@@ -118,42 +117,60 @@
 								<td>
 									{{.SerialNumber}}
 								</td>
+								<td>
+									{{.AssetCode}}
+								</td>
+								<td>
+									{{.Model}}
+								</td>
+								<td>
+									{{.CPU}}
+								</td>
+								<td>
+									{{.RAM}}
+								</td>
+								<td>
+									{{.Room}}
+								</td>
+								<td>
+									{{.Building}}
+								</td>
+								<td>
+									{{.Rack}}
+								</td>
+								<td>
+									{{.Remarks}}
+								</td>
+								<td>
+									{{.Status}}
+								</td>
 							</tr>
 						</tbody>
 					{{end}}
 					</table>
-					::after
 			</br>
-
-			<div class="row">
-
-				<div class="col-6 col-md-4">
-					<form action="/send" method="POST" accept-charset="UTF-8" novalidate>
-						<input id="CMDBName" placeholder="Enter your CMDB ServerName" type="text" name="CMDBName" class="form-control">
-						<input  id="Function" placeholder="Enter your Function"  type="text" name="Function" class="form-control">
-						<input id="SerialNumber" placeholder="Enter your SerialNumber" type="text" name="SerialNumber" class="form-control">
-						<input class="btn btn-lg btn-primary" type="submit" value="Register">
-					</form>
-					</br>
-				</div>
-				<div class="col-6 col-md-4">
-
-					<form action="/delete" method="POST" accept-charset="UTF-8" novalidate>
-						<input id="id" placeholder="Enter ID for Deletion" type="text" name="id" class="form-control">
-						<input class="btn btn-lg btn-danger" type="submit" value="Delete">
-					</form>
-					</br>
-				</div>
-
-			</div>
-
+			</br>
+				<form action="/send" method="POST" accept-charset="UTF-8" novalidate class="form-inline">
+					<label class="sr-only" for="inlineFormInput">CMDBName</label>
+					<input id="CMDBName" placeholder="CMDB ServerName" type="text" name="CMDBName" class="form-control mb-2 mr-sm-2 mb-sm-0">
+					<label class="sr-only" for="inlineFormInput">Function</label>
+					<input  id="Function" placeholder="Function"  type="text" name="Function" class="form-control mb-2 mr-sm-2 mb-sm-0">
+					<label class="sr-only" for="inlineFormInput">SerialNumber</label>
+					<input id="SerialNumber" placeholder="SerialNumber" type="text" name="SerialNumber" class="form-control mb-2 mr-sm-2 mb-sm-0">
+					<button class="btn btn-primary" type="submit">Submit</button>
+				</form>
+				</br>
+				<form action="/delete" method="POST" accept-charset="UTF-8" novalidate class="form-inline">
+					<label class="sr-only" for="inlineFormInput">id</label>
+					<input id="id" placeholder="ID for Deletion" type="text" name="id" class="form-control mb-2 mr-sm-2 mb-sm-0">
+					<button class="btn btn-danger" type="submit">Delete</button>
+				</form>
+				</br>
 			<footer class="footer">
 	      		<div class="container">
 	        		<span class="text-muted">Made by Somebody.</span>
 	      		</div>
    			</footer>
-
-
 		</div>
 	</body>
 </html>

@@ -3,9 +3,8 @@ package main
 import (
 	"api"
 	"github.com/gorilla/mux"
-	"web"
-
 	"net/http"
+	"web"
 )
 
 // TO DO
@@ -54,6 +53,9 @@ func main() {
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
+
+	// Login
+	r.HandleFunc("/login", web.Login)
 
 	// API Part
 	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")

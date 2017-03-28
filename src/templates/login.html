@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		
+		<!-- <script type="text/javascript">
+		$(document).ready(function() {
+		$('#example').DataTable( {
+			"searching": false
+			} );
+		} );
+		</script> -->
+
+		<!-- <script src=//code.jquery.com/jquery-1.12.4.js></script>
+		<script src=https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js></script>
+		<script src=https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js></script>
+		<link rel="stylesheet" type="text/css" href=//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css></script>
+		<link rel="stylesheet" type="text/css" href=https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css></script> -->
+
+		<style type="text/css">
+		
+		.table {
+			    margin-top: 1rem;
+		}
+		body {
+			font-size: 12px;
+		}
+
+		.btn {
+			font-size: 12px;
+		}
+		.dropdown-menu{
+		    font-size: 12px;
+
+		}
+		.form-control {
+			font-size: 12px;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link active" href="/index">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link"  href="#">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
+					</li>
+				</ul>
+			</br>		
+			<div class="starter-template">
+					<h1 class="uk-heading-large">CloudTab</h1>
+					<p class="lead">Welcome to CloudTab, A simple CMDB</p>
+			</div>
+			</br>
+
+			<form action="/send" method="POST" accept-charset="UTF-8" novalidate class="form-inline">
+			<label class="sr-only" for="inlineFormInput">Login</label>
+			<input id="Login" placeholder="Login" type="text" name="Login" class="form-control mb-2 mr-sm-2 mb-sm-0">
+			<label class="sr-only" for="inlineFormInput">Password</label>
+			<input  id="Password" placeholder="Password"  type="text" name="Password" class="form-control mb-2 mr-sm-2 mb-sm-0">
+			
+			<button class="btn btn-primary" type="submit">Submit</button>
+			</form>
+			</br>
+
+
+
+
+			<footer class="footer">
+	      		<div class="container">
+	        		<span class="text-muted">Made by Somebody.</span>
+	      		</div>
+   			</footer>
+		</div>
+	</body>
+</html>
