@@ -35,35 +35,27 @@
 		th {
 			cursor:n-resize;
 		}
-
 		.paginate_button {
 			padding-left: 2px;
 			padding-right: 2px;
 		}
-		div.dataTables_wrapper div.dataTables_filter{
-			text-align:right
-		}
-	
-		div.dataTables_wrapper div.dataTables_info{
-			padding-top:8px;
-			white-space:nowrap;
-		}
-
-
-		div.dataTables_wrapper div.dataTables_paginate{
-			margin:0;
-			white-space:nowrap;
-			text-align:right;
-		}
-
 
 		</style>
 
-		<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-html5-1.2.4/cr-1.3.2/se-1.2.0/datatables.min.js"></script>
+
 		<script type="text/javascript">
 		$(document).ready(function(){
-		$('#myTable').DataTable();
+		$('#myTable').DataTable({
+			paging: true,
+			buttons: [
+				'copy', 'excel', 'pdf'
+			]
+			}
+			);
 		});
+
+ 
 		</script>
 
 		<script type="text/javascript">
@@ -99,7 +91,7 @@
 					<p class="lead">Welcome to CloudTab, A simple CMDB</p>
 			</div>
 			</br>
-			
+				<div>
 				<table class="table table-hover" id="myTable">
 					<thead>
 							<tr>
@@ -171,8 +163,12 @@
 					</tbody>
 				
 				</table>
-			
+				</div>
+			</br>
+			</br>
+			<div>
 			<button name=hide id="hide">Show/Hide Elements</button>
+			</div>
 			</br>
 			</br>
 
