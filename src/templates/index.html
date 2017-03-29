@@ -8,22 +8,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
-		<!-- <script type="text/javascript">
-		$(document).ready(function() {
-		$('#example').DataTable( {
-			"searching": false
-			} );
-		} );
-		</script> -->
-
-		<!-- <script src=//code.jquery.com/jquery-1.12.4.js></script>
-		<script src=https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js></script>
-		<script src=https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js></script>
-		<link rel="stylesheet" type="text/css" href=//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css></script>
-		<link rel="stylesheet" type="text/css" href=https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css></script> -->
-
-		
-
 		<style type="text/css">
 		.table {
 			    margin-top: 1rem;
@@ -48,7 +32,39 @@
 		.tobehide {
 			display: none;
 		}
+		th {
+			cursor:n-resize;
+		}
+
+		.paginate_button {
+			padding-left: 2px;
+			padding-right: 2px;
+		}
+		div.dataTables_wrapper div.dataTables_filter{
+			text-align:right
+		}
+	
+		div.dataTables_wrapper div.dataTables_info{
+			padding-top:8px;
+			white-space:nowrap;
+		}
+
+
+		div.dataTables_wrapper div.dataTables_paginate{
+			margin:0;
+			white-space:nowrap;
+			text-align:right;
+		}
+
+
 		</style>
+
+		<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		$('#myTable').DataTable();
+		});
+		</script>
 
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -84,25 +100,13 @@
 			</div>
 			</br>
 			
-				<table class="table table-hover">
+				<table class="table table-hover" id="myTable">
 					<thead>
 							<tr>
-								<th >
-								<!-- <div class="th-inner sortable both"> -->
-								ID
-								<!-- </div> -->
-								</th>
-								<th >
-								<!-- <div class="th-inner sortable both desc"> -->
-								Name
-								</th>
-								<!-- </div> -->
-								<th >
-								<!-- <div class="th-inner sortable both"> -->
-								Function
-								</th>
-								<!-- </div> -->
-								<th >SerialNumber</th>
+								<th >ID</th>
+								<th id="Name">Name</th>
+								<th >Function</th>
+								<th id="SN">SerialNumber</th>
 								<th >AssetCode</th>
 								<th class="hidden">Model</th>
 								<th class="hidden">CPU</th>
@@ -115,9 +119,10 @@
 
 							</tr>
 					</thead>
-					{{range .}}
+					
 
 					<tbody>
+					{{range .}}
 						<tr>
 
 							<td >
@@ -162,8 +167,9 @@
 								{{.Status}}
 							</td>
 						</tr>
+					{{end}}
 					</tbody>
-				{{end}}
+				
 				</table>
 			
 			<button name=hide id="hide">Show/Hide Elements</button>
