@@ -67,6 +67,7 @@ curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/server
 - [x] Store multiple networks per asset
 - [ ] Authentication
 - [ ] Jwt implementation
+- [ ] Add date insertion asset
 
 
 

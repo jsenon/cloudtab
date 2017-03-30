@@ -7,15 +7,7 @@ import (
 	"web"
 )
 
-// TO DO
-// Package for struct JSON Server
-// Web part to view details
-// Web part Update
-// Import CSV
-// Detail Select Column to show
-
 // TO FIX
-// Responsive details page view
 
 // Struct JSON
 // Server{
