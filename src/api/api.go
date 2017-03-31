@@ -141,5 +141,26 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 }
 
 func UpdateItem(w http.ResponseWriter, req *http.Request) {
+	// fmt.Println("Im in update api")
+	vars := mux.Vars(req)
+	id := vars["id"]
+	// fmt.Println("id", id)
+
+	var server db.Server
+
+	decoder := json.NewDecoder(req.Body)
+
+	errjson := decoder.Decode(&server)
+
+	if errjson != nil {
+		fmt.Println("Incorrect body")
+		fmt.Println(errjson)
+		return
+	}
+
+	if erro, err := db.Updatemain(id, server); err != nil && erro != nil {
+		handleError(err, "Failed to save data: %v", w)
+		return
+	}
 
 }
