@@ -82,8 +82,12 @@ func Login(res http.ResponseWriter, req *http.Request) {
 }
 
 func Update(res http.ResponseWriter, req *http.Request) {
-	// vars := mux.Vars(req)
-	// id := vars["id"]
+	vars := mux.Vars(req)
+	id := vars["id"]
+	rs, err := db.GetOne(id)
+	if err != nil {
+		return
+	}
 	t, _ := template.ParseFiles("templates/update.html")
 	t.Execute(res, rs)
 }
