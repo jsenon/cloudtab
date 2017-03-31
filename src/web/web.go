@@ -80,3 +80,10 @@ func Login(res http.ResponseWriter, req *http.Request) {
 	t.Execute(res, req)
 
 }
+
+func Update(res http.ResponseWriter, req *http.Request) {
+	// vars := mux.Vars(req)
+	// id := vars["id"]
+	t, _ := template.ParseFiles("templates/update.html")
+	t.Execute(res, rs)
+}

@@ -45,6 +45,7 @@ func main() {
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
+	r.HandleFunc("/update/{id}", web.Update)
 
 	// Login
 	r.HandleFunc("/login", web.Login)
