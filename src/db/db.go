@@ -5,6 +5,7 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
+	"time"
 )
 
 type Server struct {
@@ -18,6 +19,8 @@ type Server struct {
 	Networking         []Networks `json:"Networksrows"`
 	Remarks            string     `json:"Remarks"`
 	Status             string     `json:"Status"`
+	UpdateTime         time.Time  `json:"UpdateTime,omitempty"`
+	InsertTime         time.Time  `json:"InsertTime,omitempty"`
 }
 
 type HardwareDefinition struct {

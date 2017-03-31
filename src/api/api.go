@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
+	"time"
 	// "strconv"
 )
 
@@ -46,6 +47,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 
 	if errjson != nil {
 		fmt.Println("Incorrect body")
+		fmt.Println(errjson)
 		return
 	}
 	// fmt.Println(server)
@@ -64,6 +66,11 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	Rack := server.Localisation.Rack
 	Remarks := server.Remarks
 	Status := server.Status
+	UpdateTime := time.Now()
+	InsertTime := time.Now()
+
+	fmt.Println(UpdateTime)
+	fmt.Println(InsertTime)
 
 	// IpAddr := server.Networking[0].IpAddr
 	// PatchPanel := server.Networking[0].PatchPanel
@@ -74,7 +81,7 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 
 	// item := db.Server{ID: id, CMDBName: Name, Networking: []db.Networks{{IpAddr: IpAddr, PatchPanel: PatchPanel, ServerPort: ServerPort, Switch: Switch, Vlan: Vlan, MAC: MAC}}}
 
-	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Remarks: Remarks, Status: Status}
+	item := db.Server{ID: id, CMDBName: Name, Function: Function, SerialNumber: SerialNumber, AssetCode: AssetCode, HardwareDefinition: db.HardwareDefinition{Model: Model, CPU: CPU, RAM: RAM}, Localisation: db.Localisation{Room: Room, Building: Building, Rack: Rack}, Remarks: Remarks, Status: Status, UpdateTime: UpdateTime, InsertTime: InsertTime}
 	if err := db.Save(item); err != nil {
 		handleError(err, "Failed to save data: %v", w)
 		return
