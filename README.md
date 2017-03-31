@@ -74,7 +74,7 @@ curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json
 - [x] Store multiple networks per asset
 - [ ] Authentication
 - [ ] Jwt implementation
-- [ ] Add date insertion asset
+- [x] Add date insertion asset
 
 
 

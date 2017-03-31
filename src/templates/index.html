@@ -55,22 +55,22 @@
 		});	
 		</script>	
 
-	<!-- 	<script type="text/javascript">
-			$(document).ready(function(){
-				$("button[name='hide']").click(function(){
-					$(".hidden").removeClass('hidden');
-				});
-			});
-		</script> -->
-
 		<script type="text/javascript">
-			$(document).ready(function(){
-				$("button[name='hide']").click(function(){
-					// document.getElementById("classswitch").classList.add('hidden');
-					$(".hidden").toggleClass('hidden');
-				});
-			});
+		$(document).ready(function(){
+		$("button[name='hide']").click(function(e) {
+		 if($(".hidden").css("display") != "none") {
+		  $(".hidden").hide();
+		  $(".hidden").css("display","none");
+		 } else {
+		  $(".hidden").show();
+		  $(".hidden").css("display","table-cell");
+		 }
+		});
+		});	
 		</script>
+
+
+	
 
 	</head>
 
@@ -173,7 +173,7 @@
 			</br>
 			</br>
 			<div class="row">
-			<button class="btn btn-outline-secondary" name=hide id="hide">Show/Hide Elements</button>
+			<button class="btn btn-outline-secondary" name=hide id="hide">Switch View</button>
 			</div>
 			</br>
 			</br>
