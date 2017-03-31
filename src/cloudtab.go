@@ -54,7 +54,7 @@ func main() {
 	r.HandleFunc("/api/servers", api.PostItem).Methods("POST")
 	r.HandleFunc("/api/servers/{id}", api.DeleteItem).Methods("DELETE")
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
-	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("UPDATE")
+	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 
 	http.ListenAndServe(":9010", r)
 }
