@@ -7,15 +7,7 @@ import (
 	"web"
 )
 
-// TO DO
-// Package for struct JSON Server
-// Web part to view details
-// Web part Update
-// Import CSV
-// Detail Select Column to show
-
 // TO FIX
-// Responsive details page view
 
 // Struct JSON
 // Server{
@@ -58,10 +50,10 @@ func main() {
 	r.HandleFunc("/login", web.Login)
 
 	// API Part
-	r.HandleFunc("/servers", api.GetAllItems).Methods("GET")
-	r.HandleFunc("/servers", api.PostItem).Methods("POST")
-	r.HandleFunc("/servers/{id}", api.DeleteItem).Methods("DELETE")
-	r.HandleFunc("/servers/{id}", api.GetItem).Methods("GET")
+	r.HandleFunc("/api/servers", api.GetAllItems).Methods("GET")
+	r.HandleFunc("/api/servers", api.PostItem).Methods("POST")
+	r.HandleFunc("/api/servers/{id}", api.DeleteItem).Methods("DELETE")
+	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
 
 	http.ListenAndServe(":9010", r)
 }
