@@ -139,3 +139,7 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 
 	w.Write(bs)
 }
+
+func UpdateItem(w http.ResponseWriter, req *http.Request) {
+
+}
