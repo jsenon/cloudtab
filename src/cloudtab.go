@@ -1,3 +1,19 @@
+//go:generate swagger generate spec
+
+// Package Main CloudTab.
+//
+// the purpose of this application is to provide an CMDB application
+// that will store information in mongodb backend
+//
+// Application is available through API or Web Frontend
+//
+// Terms Of Service:
+//
+// there are no TOS at this moment, use at your own risk we take no responsibility
+//
+//
+// swagger:meta
+
 package main
 
 import (

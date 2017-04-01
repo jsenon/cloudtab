@@ -1,3 +1,28 @@
+// Package Api CloudTab.
+//
+// the purpose of this package is to provide Api Interface
+//
+//
+// Terms Of Service:
+//
+// there are no TOS at this moment, use at your own risk we take no responsibility
+//
+//     Schemes: http
+//     Host: localhost
+//     BasePath: /api
+//     Version: 0.0.1
+//     License: MIT http://opensource.org/licenses/MIT
+//     Contact: Julien SENON <julien.senon@gmail.com>
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//
+// swagger:meta
+
 package api
 
 import (
@@ -11,6 +36,29 @@ import (
 	"time"
 	// "strconv"
 )
+
+// swagger:route GET /servers
+//
+// Lists servers
+//
+// This will show all available asset by default.
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: http
+//
+//     Security:
+//       api_key:
+//       oauth:
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
 
 func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
@@ -33,7 +81,29 @@ func handleError(err error, message string, w http.ResponseWriter) {
 	w.Write([]byte(fmt.Sprintf(message, err)))
 }
 
-// PostItem saves an item (form data) into the database.
+// swagger:route POST /servers
+//
+// Add servers
+//
+// This will register asset.
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: http
+//
+//     Security:
+//       api_key:
+//       oauth:
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
+
 func PostItem(w http.ResponseWriter, req *http.Request) {
 	var server db.Server
 
@@ -105,6 +175,29 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
+// swagger:route DELETE /servers idserver
+//
+// Delete servers
+//
+// This will delete asset.
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: http
+//
+//     Security:
+//       api_key:
+//       oauth:
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
+
 func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -116,6 +209,29 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 
 	w.Write([]byte("OK"))
 }
+
+// swagger:route GET /servers idserver
+//
+// Lists specific server
+//
+// This will list details for specific server.
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: http
+//
+//     Security:
+//       api_key:
+//       oauth:
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
 
 func GetItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
@@ -139,6 +255,29 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 
 	w.Write(bs)
 }
+
+// swagger:route PATCH /servers idserver
+//
+// Update specific server
+//
+// This will update details for specific server.
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: http
+//
+//     Security:
+//       api_key:
+//       oauth:
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
 
 func UpdateItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println("Im in update api")

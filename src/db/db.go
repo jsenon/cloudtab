@@ -1,3 +1,15 @@
+// Package db CloudTab.
+//
+// the purpose of this package is to provide db Interface
+//
+//
+// Terms Of Service:
+//
+// there are no TOS at this moment, use at your own risk we take no responsibility
+//
+//
+// swagger:meta
+
 package db
 
 import (
@@ -8,40 +20,72 @@ import (
 	"time"
 )
 
+// User represents the user for this application
+//
+// A user is the security principal for this application.
+// It's also used as one of main axis for reporting.
+//
+// A user can have friends with whom they can share what they like.
+//
+// swagger:model
 type Server struct {
-	ID                 bson.ObjectId `json:"id" bson:"_id,omitempty"`
-	CMDBName           string        `json:"CMDBName"`
-	Function           string        `json:"Function"`
-	SerialNumber       string        `json:"SerialNumber"`
-	AssetCode          string        `json:"Assetcode" `
+	// ID Server Generated
+	ID bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	// Server Name
+	CMDBName string `json:"CMDBName"`
+	// Server Function
+	Function string `json:"Function"`
+	// Server Serial Number
+	SerialNumber string `json:"SerialNumber"`
+	// Server Asset Code
+	AssetCode string `json:"Assetcode" `
+	// Server Hardware Definition
 	HardwareDefinition `json:"Hardwarerows"`
-	Localisation       `json:"Localisationrows"`
-	Networking         []Networks `json:"Networksrows"`
-	Remarks            string     `json:"Remarks"`
-	Status             string     `json:"Status"`
-	UpdateTime         time.Time  `json:"UpdateTime,omitempty" bson:"UpdateTime"`
-	InsertTime         time.Time  `json:"InsertTime,omitempty" bson:"InsertTime"`
+	// Server Localisation
+	Localisation `json:"Localisationrows"`
+	// Server Network Definition
+	Networking []Networks `json:"Networksrows"`
+	// Remark associate to server
+	Remarks string `json:"Remarks"`
+	// Server Status
+	Status string `json:"Status"`
+	// Server Update Time
+	UpdateTime time.Time `json:"UpdateTime,omitempty" bson:"UpdateTime"`
+	// Server Insert Time
+	InsertTime time.Time `json:"InsertTime,omitempty" bson:"InsertTime"`
 }
 
 type HardwareDefinition struct {
+	// Server Model
 	Model string `json:"Model"`
-	CPU   string `json:"CPU"`
-	RAM   string `json:"RAM"`
+	// Server CPU Speed
+	CPU string `json:"CPU"`
+	// Server Memory
+	RAM string `json:"RAM"`
 }
 
 type Localisation struct {
-	Room     string `json:"Room"`
+	// Server Room
+	Room string `json:"Room"`
+	// Server Building
 	Building string `json:"Building"`
-	Rack     string `json:"Rack"`
+	// Server Rack
+	Rack string `json:"Rack"`
 }
 
 type Networks struct {
-	IpAddr     string `json:"Ipaddr"`
+	// Server Ip Add associated
+	IpAddr string `json:"Ipaddr"`
+	// Server Patch Panel Number
 	PatchPanel string `json:"Patchpanel"`
+	// Server Port
 	ServerPort string `json:"Serverport"`
-	Switch     string `json:"Switch"`
-	Vlan       string `json:"Vlan"`
-	MAC        string `json:"MAC"`
+	// Server Switch
+	Switch string `json:"Switch"`
+	// Server vlan
+	Vlan string `json:"Vlan"`
+	// Server VLAN
+	MAC string `json:"MAC"`
 }
 
 type Network struct {
