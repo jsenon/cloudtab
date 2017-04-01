@@ -45,6 +45,7 @@ func main() {
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
+	r.HandleFunc("/update/{id}", web.Update)
 
 	// Login
 	r.HandleFunc("/login", web.Login)
@@ -54,6 +55,7 @@ func main() {
 	r.HandleFunc("/api/servers", api.PostItem).Methods("POST")
 	r.HandleFunc("/api/servers/{id}", api.DeleteItem).Methods("DELETE")
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
+	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 
 	http.ListenAndServe(":9010", r)
 }

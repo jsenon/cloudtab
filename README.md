@@ -37,22 +37,28 @@ docker exec -it cloudtab-mongo mongo admin
 
 POST API
 ```sh
-curl -X POST  -H "Content-Type: application/json"  -d @body_example.jsonhttp://localhost:9010/servers
+curl -X POST  -H "Content-Type: application/json"  -d @body_example.jsonhttp://localhost:9010/api/servers
 ```
 GET API ALL
 ```sh
-curl  -H "Content-Type: application/json"  http://localhost:9010/servers
+curl  -H "Content-Type: application/json"  http://localhost:9010/api/servers
 ```
 
 GET API Specific ID
 ```sh
-curl  -H "Content-Type: application/json"  http://localhost:9010/servers/YOURID
+curl  -H "Content-Type: application/json"  http://localhost:9010/api/servers/YOURID
 ```
 
 DELETE API 
 ```sh
-curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/servers/YOURID
+curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/api/servers/YOURID
 ```
+UPDATE API 
+```sh
+curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json http://localhost:9010/api/servers/YOURID
+```
+
+
 
 
 ### ToDo
@@ -61,13 +67,15 @@ curl -X DELETE -H "Content-Type: application/json"  http://localhost:9010/server
 - [x] Package for struct JSON Server
 - [x] Web part to view details
 - [ ] Web part Update
+- [x] API part Update
 - [ ] Import CSV
-- [ ] Detail Select Column to show
+- [x] Detail Select Column to show
 - [ ] Unique fields in db
 - [x] Store multiple networks per asset
 - [ ] Authentication
 - [ ] Jwt implementation
-- [ ] Add date insertion asset
+- [x] Add date insertion asset
+- [ ] Swagger client UI
 
 
 
