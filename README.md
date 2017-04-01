@@ -75,7 +75,7 @@ curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json
 - [ ] Authentication
 - [ ] Jwt implementation
 - [x] Add date insertion asset
-- [x] API Doc with swagger
+- [x] API Doc
 
 
 
