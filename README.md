@@ -69,12 +69,13 @@ curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json
 - [ ] Web part Update
 - [x] API part Update
 - [ ] Import CSV
-- [ ] Detail Select Column to show
+- [x] Detail Select Column to show
 - [ ] Unique fields in db
 - [x] Store multiple networks per asset
 - [ ] Authentication
 - [ ] Jwt implementation
 - [x] Add date insertion asset
+- [ ] Swagger client UI
 
 
 
