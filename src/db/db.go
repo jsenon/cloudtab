@@ -5,6 +5,7 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
+	"time"
 )
 
 type Server struct {
@@ -18,6 +19,8 @@ type Server struct {
 	Networking         []Networks `json:"Networksrows"`
 	Remarks            string     `json:"Remarks"`
 	Status             string     `json:"Status"`
+	UpdateTime         time.Time  `json:"UpdateTime,omitempty" bson:"UpdateTime"`
+	InsertTime         time.Time  `json:"InsertTime,omitempty" bson:"InsertTime"`
 }
 
 type HardwareDefinition struct {
@@ -91,6 +94,20 @@ func Update(key string, item string, values Networks) error {
 	_, err := collection().Upsert(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$addToSet": bson.M{item: values}})
 	fmt.Println(err, key, bson.ObjectIdHex(key), item, values)
 	return err
+}
+
+//Main Update func
+func Updatemain(key string, item Server) (error, error) {
+	// Func ONLY available for []network{} collection
+	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+	// db.items.updateOne({cmdbname:"ServerTest99"},{$addToSet:{"networking": [ { "ipaddr" : "abcd", "patchpanel" : "abcd", "serverport" : "abcd", "switch" : "abcd", "vlan" : "abcd", "mac" : "abcdefg" } ]}})
+	err := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, item)
+
+	UpdateTime := time.Now()
+	erro := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$set": bson.M{"UpdateTime": UpdateTime}})
+	fmt.Println(erro, UpdateTime)
+
+	return err, erro
 }
 
 func GetOne(id string) (*Server, error) {

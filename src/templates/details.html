@@ -138,9 +138,18 @@
 					</br>
 					Status:  {{.Status}}
 					</br>
+					Time Updated: {{.UpdateTime}}
+					</br>
+					Time Inserted: {{.InsertTime}}
+					</br>
 				</tr>
 				</br>
 			</div>
+			<div class="col-md-6" style="text-align: left;" >
+			<!-- /update/{{.ID.Hex}} -->
+			<a href="/update/{{.ID.Hex}}" class="btn btn-outline-primary" name=update id="update">Update</a>
+			</div>
+			</br>
 			<footer class="footer">
 	      		<div class="container">
 	        		<span class="text-muted">Made by Somebody.</span>
