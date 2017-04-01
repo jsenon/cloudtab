@@ -35,7 +35,22 @@ import (
 	// "strconv"
 )
 
-// swagger:route GET /servers
+// A ValidationError is an error that is used when the required input fails validation.
+// swagger:response validationError
+type ValidationError struct {
+	// The error message
+	// in: body
+	Body struct {
+		// The validation message
+		//
+		// Required: true
+		Message string
+		// An optional field name to which this validation applies
+		FieldName string
+	}
+}
+
+// swagger:route GET /servers listservers
 //
 // Lists servers
 //
@@ -49,37 +64,32 @@ import (
 //
 //     Schemes: http
 //
-//     Security:
-//       api_key:
-//       oauth:
-//
 //     Responses:
-//       default: genericError
-//       200: someResponse
-//       422: validationError
-
+//       default: validationError
 func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
 	if err != nil {
 		handleError(err, "Failed to load database items: %v", w)
 		return
 	}
-
+	// swagger:response Item
+	// in: body
 	bs, err := json.MarshalIndent(rs, "", "    ")
 	if err != nil {
 		handleError(err, "Failed to load marshal data: %v", w)
 		return
 	}
-
 	w.Write(bs)
 }
 
+// A ValidationError is an error that is used when the required input fails validation.
+// swagger:response handleError
 func handleError(err error, message string, w http.ResponseWriter) {
 	w.WriteHeader(http.StatusInternalServerError)
 	w.Write([]byte(fmt.Sprintf(message, err)))
 }
 
-// swagger:route POST /servers
+// swagger:route POST /servers addserver
 //
 // Add servers
 //
@@ -93,15 +103,8 @@ func handleError(err error, message string, w http.ResponseWriter) {
 //
 //     Schemes: http
 //
-//     Security:
-//       api_key:
-//       oauth:
-//
 //     Responses:
-//       default: genericError
-//       200: someResponse
-//       422: validationError
-
+//       default: validationError
 func PostItem(w http.ResponseWriter, req *http.Request) {
 	var server db.Server
 
@@ -169,11 +172,10 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 	}
-
 	w.Write([]byte("OK"))
 }
 
-// swagger:route DELETE /servers idserver
+// swagger:route DELETE /servers deleteserver
 //
 // Delete servers
 //
@@ -187,15 +189,8 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 //
 //     Schemes: http
 //
-//     Security:
-//       api_key:
-//       oauth:
-//
 //     Responses:
-//       default: genericError
-//       200: someResponse
-//       422: validationError
-
+//       default: validationError
 func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -204,11 +199,10 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 		handleError(err, "Failed to remove item: %v", w)
 		return
 	}
-
 	w.Write([]byte("OK"))
 }
 
-// swagger:route GET /servers idserver
+// swagger:route GET /servers detailserver
 //
 // Lists specific server
 //
@@ -222,15 +216,8 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 //
 //     Schemes: http
 //
-//     Security:
-//       api_key:
-//       oauth:
-//
 //     Responses:
-//       default: genericError
-//       200: someResponse
-//       422: validationError
-
+//       default: validationError
 func GetItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -250,11 +237,10 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 		handleError(err, "Failed to marshal data: %v", w)
 		return
 	}
-
 	w.Write(bs)
 }
 
-// swagger:route PATCH /servers idserver
+// swagger:route PATCH /servers updateserver
 //
 // Update specific server
 //
@@ -268,15 +254,8 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 //
 //     Schemes: http
 //
-//     Security:
-//       api_key:
-//       oauth:
-//
 //     Responses:
-//       default: genericError
-//       200: someResponse
-//       422: validationError
-
+//       default: validationError
 func UpdateItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println("Im in update api")
 	vars := mux.Vars(req)
@@ -299,5 +278,5 @@ func UpdateItem(w http.ResponseWriter, req *http.Request) {
 		handleError(err, "Failed to save data: %v", w)
 		return
 	}
-
+	w.Write([]byte("OK"))
 }

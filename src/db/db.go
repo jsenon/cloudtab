@@ -88,20 +88,6 @@ type Networks struct {
 	MAC string `json:"MAC"`
 }
 
-type Network struct {
-	NCMDBName     string `json:"NCMDBName"`
-	NFunction     string `json:"NFunction"`
-	NSerialNumber string `json:"NSerialNumber"`
-	NAssetCode    int    `json:"NAssetCode"`
-	NRows         []Localisation
-}
-
-type Person struct {
-	User     string
-	Password string
-	Mail     string
-}
-
 var db *mgo.Database
 
 func init() {
