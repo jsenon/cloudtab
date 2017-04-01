@@ -1,0 +1,324 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "the purpose of this package is to provide Api Interface",
+    "title": "CloudTab.",
+    "termsOfService": "there are no TOS at this moment, use at your own risk we take no responsibility",
+    "contact": {
+      "name": "Julien SENON",
+      "email": "julien.senon@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    },
+    "version": "0.0.1"
+  },
+  "host": "localhost",
+  "basePath": "/api",
+  "paths": {
+    "/servers": {
+      "get": {
+        "description": "This will list details for specific server.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "summary": "Lists specific server",
+        "operationId": "idserver",
+        "security": [
+          {
+            "api_key": []
+          },
+          {
+            "oauth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/someResponse"
+          },
+          "422": {
+            "$ref": "#/responses/validationError"
+          },
+          "default": {
+            "$ref": "#/responses/genericError"
+          }
+        }
+      },
+      "delete": {
+        "description": "This will delete asset.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "summary": "Delete servers",
+        "operationId": "idserver",
+        "security": [
+          {
+            "api_key": []
+          },
+          {
+            "oauth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/someResponse"
+          },
+          "422": {
+            "$ref": "#/responses/validationError"
+          },
+          "default": {
+            "$ref": "#/responses/genericError"
+          }
+        }
+      },
+      "patch": {
+        "description": "This will update details for specific server.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "summary": "Update specific server",
+        "operationId": "idserver",
+        "security": [
+          {
+            "api_key": []
+          },
+          {
+            "oauth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/someResponse"
+          },
+          "422": {
+            "$ref": "#/responses/validationError"
+          },
+          "default": {
+            "$ref": "#/responses/genericError"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "HardwareDefinition": {
+      "type": "object",
+      "properties": {
+        "CPU": {
+          "description": "Server CPU Speed",
+          "type": "string"
+        },
+        "Model": {
+          "description": "Server Model",
+          "type": "string"
+        },
+        "RAM": {
+          "description": "Server Memory",
+          "type": "string"
+        }
+      },
+      "x-go-package": "db"
+    },
+    "Localisation": {
+      "type": "object",
+      "properties": {
+        "Building": {
+          "description": "Server Building",
+          "type": "string"
+        },
+        "Rack": {
+          "description": "Server Rack",
+          "type": "string"
+        },
+        "Room": {
+          "description": "Server Room",
+          "type": "string"
+        }
+      },
+      "x-go-package": "db"
+    },
+    "Network": {
+      "type": "object",
+      "properties": {
+        "NAssetCode": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "NCMDBName": {
+          "type": "string"
+        },
+        "NFunction": {
+          "type": "string"
+        },
+        "NRows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Localisation"
+          }
+        },
+        "NSerialNumber": {
+          "type": "string"
+        }
+      },
+      "x-go-package": "db"
+    },
+    "Networks": {
+      "type": "object",
+      "properties": {
+        "Ipaddr": {
+          "description": "Server Ip Add associated",
+          "type": "string",
+          "x-go-name": "IpAddr"
+        },
+        "MAC": {
+          "description": "Server VLAN",
+          "type": "string"
+        },
+        "Patchpanel": {
+          "description": "Server Patch Panel Number",
+          "type": "string",
+          "x-go-name": "PatchPanel"
+        },
+        "Serverport": {
+          "description": "Server Port",
+          "type": "string",
+          "x-go-name": "ServerPort"
+        },
+        "Switch": {
+          "description": "Server Switch",
+          "type": "string"
+        },
+        "Vlan": {
+          "description": "Server vlan",
+          "type": "string"
+        }
+      },
+      "x-go-package": "db"
+    },
+    "ObjectId": {
+      "description": "http://www.mongodb.org/display/DOCS/Object+IDs",
+      "type": "string",
+      "title": "ObjectId is a unique ID identifying a BSON value. It must be exactly 12 bytes\nlong. MongoDB objects by default have such a property set in their \"_id\"\nproperty.",
+      "x-go-package": "gopkg.in/mgo.v2/bson"
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "Mail": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        },
+        "User": {
+          "type": "string"
+        }
+      },
+      "x-go-package": "db"
+    },
+    "Server": {
+      "description": "A Server have multiple information to be stored.",
+      "type": "object",
+      "title": "Server represents the asset for this application",
+      "properties": {
+        "Assetcode": {
+          "description": "Server Asset Code",
+          "type": "string",
+          "x-go-name": "AssetCode"
+        },
+        "Building": {
+          "description": "Server Building",
+          "type": "string"
+        },
+        "CMDBName": {
+          "description": "Server Name",
+          "type": "string"
+        },
+        "CPU": {
+          "description": "Server CPU Speed",
+          "type": "string"
+        },
+        "Function": {
+          "description": "Server Function",
+          "type": "string"
+        },
+        "InsertTime": {
+          "description": "Server Insert Time"
+        },
+        "Model": {
+          "description": "Server Model",
+          "type": "string"
+        },
+        "Networksrows": {
+          "description": "Server Network Definition",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Networks"
+          },
+          "x-go-name": "Networking"
+        },
+        "RAM": {
+          "description": "Server Memory",
+          "type": "string"
+        },
+        "Rack": {
+          "description": "Server Rack",
+          "type": "string"
+        },
+        "Remarks": {
+          "description": "Remark associate to server",
+          "type": "string"
+        },
+        "Room": {
+          "description": "Server Room",
+          "type": "string"
+        },
+        "SerialNumber": {
+          "description": "Server Serial Number",
+          "type": "string"
+        },
+        "Status": {
+          "description": "Server Status",
+          "type": "string"
+        },
+        "UpdateTime": {
+          "description": "Server Update Time"
+        },
+        "id": {
+          "description": "ID Server Generated",
+          "x-go-name": "ID",
+          "$ref": "#/definitions/ObjectId"
+        }
+      },
+      "x-go-package": "db"
+    }
+  }
+}
