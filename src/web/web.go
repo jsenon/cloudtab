@@ -106,3 +106,10 @@ func Update(res http.ResponseWriter, req *http.Request) {
 	t, _ := template.ParseFiles("templates/update.html")
 	t.Execute(res, rs)
 }
+
+func ApiHelp(res http.ResponseWriter, req *http.Request) {
+	t, _ := template.ParseFiles("templates/docs/index.html")
+
+	t.Execute(res, req)
+
+}

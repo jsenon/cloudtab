@@ -62,6 +62,7 @@ func main() {
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
 	r.HandleFunc("/update/{id}", web.Update)
+	r.HandleFunc("/api", web.ApiHelp)
 
 	// Login
 	r.HandleFunc("/login", web.Login)

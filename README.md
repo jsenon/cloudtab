@@ -37,7 +37,7 @@ docker exec -it cloudtab-mongo mongo admin
 
 POST API
 ```sh
-curl -X POST  -H "Content-Type: application/json"  -d @body_example.jsonhttp://localhost:9010/api/servers
+curl -X POST  -H "Content-Type: application/json"  -d @body_example.json http://localhost:9010/api/servers
 ```
 GET API ALL
 ```sh
@@ -75,7 +75,7 @@ curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json
 - [ ] Authentication
 - [ ] Jwt implementation
 - [x] Add date insertion asset
-- [ ] Swagger client UI
+- [x] API Doc with swagger
 
 
 
