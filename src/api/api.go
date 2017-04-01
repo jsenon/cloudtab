@@ -35,19 +35,52 @@ import (
 	// "strconv"
 )
 
-// A ValidationError is an error that is used when the required input fails validation.
+// Input failed validation.
 // swagger:response validationError
 type ValidationError struct {
 	// The error message
 	// in: body
 	Body struct {
-		// The validation message
+		// Failed to validate request
 		//
 		// Required: true
 		Message string
-		// An optional field name to which this validation applies
-		FieldName string
 	}
+}
+
+// Structure of server answer
+// swagger:response item
+type item struct {
+	// Answer message
+	// in: body
+	Body struct {
+		// Structure JSON Server
+		//
+		// Required: true
+		Message db.Server
+	}
+}
+
+// Structure of success answer
+// swagger:response serverok
+type serverok struct {
+	// Answer message
+	// in: body
+	Body struct {
+		// OK
+		//
+		// Required: true
+		Message string
+	}
+}
+
+//Id of server
+// swagger:parameters idserver
+type idserver struct {
+	// A unique and random id server
+	//
+	//in: query
+	ID bson.ObjectId `json:"id" bson:"_id,omitempty"`
 }
 
 // swagger:route GET /servers listservers
@@ -65,15 +98,14 @@ type ValidationError struct {
 //     Schemes: http
 //
 //     Responses:
-//       default: validationError
+//       400: validationError
+//       200: item
 func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
 	if err != nil {
 		handleError(err, "Failed to load database items: %v", w)
 		return
 	}
-	// swagger:response Item
-	// in: body
 	bs, err := json.MarshalIndent(rs, "", "    ")
 	if err != nil {
 		handleError(err, "Failed to load marshal data: %v", w)
@@ -82,8 +114,6 @@ func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	w.Write(bs)
 }
 
-// A ValidationError is an error that is used when the required input fails validation.
-// swagger:response handleError
 func handleError(err error, message string, w http.ResponseWriter) {
 	w.WriteHeader(http.StatusInternalServerError)
 	w.Write([]byte(fmt.Sprintf(message, err)))
@@ -104,7 +134,8 @@ func handleError(err error, message string, w http.ResponseWriter) {
 //     Schemes: http
 //
 //     Responses:
-//       default: validationError
+//       400: validationError
+//       200: serverok
 func PostItem(w http.ResponseWriter, req *http.Request) {
 	var server db.Server
 
@@ -190,7 +221,8 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 //     Schemes: http
 //
 //     Responses:
-//       default: validationError
+//       400: validationError
+//       200: serverok
 func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -202,7 +234,7 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-// swagger:route GET /servers detailserver
+// swagger:route GET /servers/idserver detailserver
 //
 // Lists specific server
 //
@@ -217,7 +249,8 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 //     Schemes: http
 //
 //     Responses:
-//       default: validationError
+//       400: validationError
+//       200: item
 func GetItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -240,7 +273,7 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 	w.Write(bs)
 }
 
-// swagger:route PATCH /servers updateserver
+// swagger:route PATCH /servers/idserver updateserver
 //
 // Update specific server
 //
@@ -255,7 +288,8 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 //     Schemes: http
 //
 //     Responses:
-//       default: validationError
+//       400: validationError
+//       200: serverok
 func UpdateItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println("Im in update api")
 	vars := mux.Vars(req)
