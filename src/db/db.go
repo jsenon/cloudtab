@@ -1,15 +1,18 @@
 // Package db CloudTab.
 //
-// the purpose of this package is to provide db Interface
-//
+// the purpose of this package is to provide DB Interface to mongodb
 //
 // Terms Of Service:
 //
 // there are no TOS at this moment, use at your own risk we take no responsibility
 //
+//     Schemes: http
+//     Host: localhost
+//     BasePath: /api
+//     Version: 0.0.1
+//     License: MIT http://opensource.org/licenses/MIT
+//     Contact: Julien SENON <julien.senon@gmail.com>
 //
-// swagger:meta
-
 package db
 
 import (
@@ -20,12 +23,9 @@ import (
 	"time"
 )
 
-// User represents the user for this application
+// Server represents the asset for this application
 //
-// A user is the security principal for this application.
-// It's also used as one of main axis for reporting.
-//
-// A user can have friends with whom they can share what they like.
+// A Server have multiple information to be stored.
 //
 // swagger:model
 type Server struct {

@@ -2,7 +2,6 @@
 //
 // the purpose of this package is to provide Api Interface
 //
-//
 // Terms Of Service:
 //
 // there are no TOS at this moment, use at your own risk we take no responsibility
@@ -22,7 +21,6 @@
 //
 //
 // swagger:meta
-
 package api
 
 import (

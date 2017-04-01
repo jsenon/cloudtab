@@ -1,19 +1,19 @@
 //go:generate swagger generate spec
-
-// Package Main CloudTab.
+// Package main CloudTab.
 //
 // the purpose of this application is to provide an CMDB application
 // that will store information in mongodb backend
-//
-// Application is available through API or Web Frontend
 //
 // Terms Of Service:
 //
 // there are no TOS at this moment, use at your own risk we take no responsibility
 //
-//
-// swagger:meta
-
+//     Schemes: http
+//     Host: localhost
+//     BasePath: /
+//     Version: 0.0.1
+//     License: MIT http://opensource.org/licenses/MIT
+//     Contact: Julien SENON <julien.senon@gmail.com>
 package main
 
 import (

@@ -1,7 +1,6 @@
-// Package Web CloudTab.
+// Package web CloudTab.
 //
-// the purpose of this package is to provide Web Interface
-//
+// the purpose of this package is to provide Web HTML Interface
 //
 // Terms Of Service:
 //
@@ -14,14 +13,6 @@
 //     License: MIT http://opensource.org/licenses/MIT
 //     Contact: Julien SENON <julien.senon@gmail.com>
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/http
-//
-//
-// swagger:meta
 package web
 
 import (
