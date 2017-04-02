@@ -74,5 +74,8 @@ func main() {
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
 	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 
+	// Static dir
+	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("templates/static/"))))
+
 	http.ListenAndServe(":9010", r)
 }

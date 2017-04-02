@@ -108,8 +108,6 @@ func Update(res http.ResponseWriter, req *http.Request) {
 }
 
 func ApiHelp(res http.ResponseWriter, req *http.Request) {
-	t, _ := template.ParseFiles("templates/docs/index.html")
-
-	t.Execute(res, req)
-
+	// URL To be changed
+	http.Redirect(res, req, "/swagger.html?url=http://127.0.0.1:9010/swaggermain.json", http.StatusSeeOther)
 }
