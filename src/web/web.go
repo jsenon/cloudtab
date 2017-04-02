@@ -109,5 +109,5 @@ func Update(res http.ResponseWriter, req *http.Request) {
 
 func ApiHelp(res http.ResponseWriter, req *http.Request) {
 	// URL To be changed
-	http.Redirect(res, req, "/swagger.html?url=http://127.0.0.1:9010/swaggermain.json", http.StatusSeeOther)
+	http.Redirect(res, req, "/swagger.html?url=http://localhost:9010/swaggermain.json", http.StatusSeeOther)
 }
