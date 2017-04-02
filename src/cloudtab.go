@@ -58,7 +58,9 @@ func main() {
 
 	r := mux.NewRouter()
 
-	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	// Remove CORS Header check to allow swagger and application on same host and port
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
+	// To be changed
 	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS", "PATCH"})
 
