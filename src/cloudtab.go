@@ -60,7 +60,7 @@ func main() {
 	r := mux.NewRouter()
 
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})
+	originsOk := handlers.AllowedOrigins([]string{*})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS", "PATCH"})
 
 	r.HandleFunc("/index", web.Index)
