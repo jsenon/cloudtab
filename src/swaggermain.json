@@ -23,7 +23,7 @@
     },
     "version": "0.0.1"
   },
-  "host": "localhost",
+  "host": "localhost:9010",
   "basePath": "/api",
   "paths": {
     "/servers": {

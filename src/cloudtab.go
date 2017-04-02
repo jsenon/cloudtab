@@ -18,8 +18,10 @@ package main
 
 import (
 	"api"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"net/http"
+	"os"
 	"web"
 )
 
@@ -57,6 +59,10 @@ func main() {
 
 	r := mux.NewRouter()
 
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	originsOk := handlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS", "PATCH"})
+
 	r.HandleFunc("/index", web.Index)
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/delete", web.Delete)
@@ -77,5 +83,5 @@ func main() {
 	// Static dir
 	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("templates/static/"))))
 
-	http.ListenAndServe(":9010", r)
+	http.ListenAndServe(":9010", handlers.CORS(originsOk, headersOk, methodsOk)(r))
 }
