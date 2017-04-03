@@ -1,6 +1,6 @@
 # cloudtab
 
-Build Web Server with mongodb backend
+Simple CMDB Web Server in GO with mongodb backend
 
 ### Prerequisite
 
