@@ -95,28 +95,6 @@
       }
     },
     "/servers/idserver": {
-      "get": {
-        "description": "This will list details for specific server.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
-        ],
-        "summary": "Lists specific server",
-        "operationId": "detailserver",
-        "responses": {
-          "200": {
-            "$ref": "#/responses/item"
-          },
-          "400": {
-            "$ref": "#/responses/validationError"
-          }
-        }
-      },
       "patch": {
         "description": "This will update details for specific server.",
         "consumes": [
@@ -133,6 +111,30 @@
         "responses": {
           "200": {
             "$ref": "#/responses/serverok"
+          },
+          "400": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/servers/{idserver}": {
+      "get": {
+        "description": "This will list details for specific server.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "summary": "Lists specific server",
+        "operationId": "detailserver",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/item"
           },
           "400": {
             "$ref": "#/responses/validationError"
