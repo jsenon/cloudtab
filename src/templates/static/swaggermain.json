@@ -29,114 +29,146 @@
     "/servers": {
       "get": {
         "description": "This will show all available asset by default.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
+        "tags": [
+          "servers"
         ],
         "summary": "Lists servers",
-        "operationId": "listservers",
+        "operationId": "listServer",
         "responses": {
           "200": {
-            "$ref": "#/responses/item"
+            "description": "server",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/server"
+              }
+            }
           },
-          "400": {
+          "default": {
             "$ref": "#/responses/validationError"
           }
         }
       },
       "post": {
         "description": "This will register asset.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
+        "tags": [
+          "servers"
         ],
         "summary": "Add servers",
-        "operationId": "addserver",
+        "operationId": "createServer",
+        "parameters": [
+          {
+            "x-go-name": "Server",
+            "description": "Server to submit",
+            "name": "server",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/server"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "$ref": "#/responses/serverok"
+            "$ref": "#/responses/successAnswer"
           },
-          "400": {
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/servers/{id}": {
+      "get": {
+        "description": "This will list details for specific server.",
+        "tags": [
+          "servers"
+        ],
+        "summary": "Lists specific server",
+        "operationId": "getServerById",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "description": "id Server Generated",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "server",
+            "schema": {
+              "$ref": "#/definitions/server"
+            }
+          },
+          "default": {
             "$ref": "#/responses/validationError"
           }
         }
       },
       "delete": {
         "description": "This will delete asset.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
+        "tags": [
+          "servers"
         ],
         "summary": "Delete servers",
-        "operationId": "deleteserver",
+        "operationId": "deleteServer",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "description": "id Server Generated",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "$ref": "#/responses/serverok"
+            "$ref": "#/responses/successAnswer"
           },
-          "400": {
+          "default": {
             "$ref": "#/responses/validationError"
           }
         }
-      }
-    },
-    "/servers/idserver": {
+      },
       "patch": {
         "description": "This will update details for specific server.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
+        "tags": [
+          "servers"
         ],
         "summary": "Update specific server",
-        "operationId": "updateserver",
-        "responses": {
-          "200": {
-            "$ref": "#/responses/serverok"
+        "operationId": "updateServer",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "description": "id Server Generated",
+            "name": "id",
+            "in": "path",
+            "required": true
           },
-          "400": {
-            "$ref": "#/responses/validationError"
+          {
+            "x-go-name": "Server",
+            "description": "Server to submit",
+            "name": "server",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/server"
+            }
           }
-        }
-      }
-    },
-    "/servers/{idserver}": {
-      "get": {
-        "description": "This will list details for specific server.",
-        "consumes": [
-          "application/json"
         ],
-        "produces": [
-          "application/json"
-        ],
-        "schemes": [
-          "http"
-        ],
-        "summary": "Lists specific server",
-        "operationId": "detailserver",
         "responses": {
           "200": {
-            "$ref": "#/responses/item"
+            "$ref": "#/responses/successAnswer"
           },
-          "400": {
+          "default": {
             "$ref": "#/responses/validationError"
           }
         }
@@ -219,7 +251,7 @@
       "title": "ObjectId is a unique ID identifying a BSON value. It must be exactly 12 bytes\nlong. MongoDB objects by default have such a property set in their \"_id\"\nproperty.",
       "x-go-package": "gopkg.in/mgo.v2/bson"
     },
-    "Server": {
+    "server": {
       "description": "A Server have multiple information to be stored.",
       "type": "object",
       "title": "Server represents the asset for this application",
@@ -293,36 +325,28 @@
           "$ref": "#/definitions/ObjectId"
         }
       },
+      "x-go-name": "Server",
       "x-go-package": "db"
     }
   },
   "responses": {
-    "item": {
-      "description": "Structure of server answer",
+    "successAnswer": {
+      "description": "Success Answer",
       "schema": {
         "type": "object",
-        "required": [
-          "Message"
-        ],
         "properties": {
-          "Message": {
-            "description": "Structure JSON Server",
-            "$ref": "#/definitions/Server"
-          }
-        }
-      }
-    },
-    "serverok": {
-      "description": "Structure of success answer",
-      "schema": {
-        "type": "object",
-        "required": [
-          "Message"
-        ],
-        "properties": {
-          "Message": {
-            "description": "OK",
-            "type": "string"
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "x-go-name": "Code"
+          },
+          "field": {
+            "type": "string",
+            "x-go-name": "Field"
+          },
+          "message": {
+            "type": "string",
+            "x-go-name": "Message"
           }
         }
       }
@@ -331,13 +355,19 @@
       "description": "Input failed validation.",
       "schema": {
         "type": "object",
-        "required": [
-          "Message"
-        ],
         "properties": {
-          "Message": {
-            "description": "Failed to validate request",
-            "type": "string"
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "x-go-name": "Code"
+          },
+          "field": {
+            "type": "string",
+            "x-go-name": "Field"
+          },
+          "message": {
+            "type": "string",
+            "x-go-name": "Message"
           }
         }
       }

@@ -19,7 +19,6 @@
 //     Produces:
 //     - application/json
 //
-//
 // swagger:meta
 package api
 
@@ -41,65 +40,54 @@ type ValidationError struct {
 	// The error message
 	// in: body
 	Body struct {
-		// Failed to validate request
-		//
-		// Required: true
-		Message string
-	}
+		Code    int32  `json:"code"`
+		Message string `json:"message"`
+		Field   string `json:"field"`
+	} `json:"body"`
 }
 
-// Structure of server answer
-// swagger:response item
-type item struct {
-	// Answer message
+// Success Answer
+// swagger:response successAnswer
+type successAnswer struct {
+	// The error message
 	// in: body
 	Body struct {
-		// Structure JSON Server
-		//
-		// Required: true
-		Message db.Server
-	}
+		Code    int32  `json:"code"`
+		Message string `json:"message"`
+		Field   string `json:"field"`
+	} `json:"body"`
 }
 
-// Structure of success answer
-// swagger:response serverok
-type serverok struct {
-	// Answer message
-	// in: body
-	Body struct {
-		// OK
-		//
-		// Required: true
-		Message string
-	}
-}
-
-//Id of server
-// swagger:parameters idserver
-type idserver struct {
-	// A unique and random id server
+// Server id
+// swagger:parameters deleteServer getServerById updateServer
+type id struct {
+	// id Server Generated
 	//
-	//in: query
-	ID bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	// in: path
+	// required: true
+	ID int64 `json:"id"`
 }
 
-// swagger:route GET /servers listservers
+// Server Param
+// swagger:parameters createServer updateServer
+type myServerBodyParams struct {
+	// Server to submit
+	//
+	// in: body
+	// required: true
+	Server *db.Server `json:"server"`
+}
+
+// swagger:route GET /servers servers listServer
 //
 // Lists servers
 //
 // This will show all available asset by default.
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Schemes: http
 //
 //     Responses:
-//       400: validationError
-//       200: item
+//       default: validationError
+//       200: []server
 func GetAllItems(w http.ResponseWriter, req *http.Request) {
 	rs, err := db.GetAll()
 	if err != nil {
@@ -119,23 +107,15 @@ func handleError(err error, message string, w http.ResponseWriter) {
 	w.Write([]byte(fmt.Sprintf(message, err)))
 }
 
-// swagger:route POST /servers addserver
+// swagger:route POST /servers servers createServer
 //
 // Add servers
 //
 // This will register asset.
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Schemes: http
-//
 //     Responses:
-//       400: validationError
-//       200: serverok
+//       default: validationError
+//       200: successAnswer
 func PostItem(w http.ResponseWriter, req *http.Request) {
 	var server db.Server
 
@@ -206,23 +186,15 @@ func PostItem(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-// swagger:route DELETE /servers deleteserver
+// swagger:route DELETE /servers/{id} servers deleteServer
 //
 // Delete servers
 //
 // This will delete asset.
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Schemes: http
-//
 //     Responses:
-//       400: validationError
-//       200: serverok
+//       default: validationError
+//       200: successAnswer
 func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -234,23 +206,15 @@ func DeleteItem(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-// swagger:route GET /servers/idserver detailserver
+// swagger:route GET /servers/{id} servers getServerById
 //
 // Lists specific server
 //
 // This will list details for specific server.
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Schemes: http
-//
 //     Responses:
-//       400: validationError
-//       200: item
+//       default: validationError
+//       200: server
 func GetItem(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -273,23 +237,15 @@ func GetItem(w http.ResponseWriter, req *http.Request) {
 	w.Write(bs)
 }
 
-// swagger:route PATCH /servers/idserver updateserver
+// swagger:route PATCH /servers/{id} servers updateServer
 //
 // Update specific server
 //
 // This will update details for specific server.
 //
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Schemes: http
-//
 //     Responses:
-//       400: validationError
-//       200: serverok
+//       default: validationError
+//       200: successAnswer
 func UpdateItem(w http.ResponseWriter, req *http.Request) {
 	// fmt.Println("Im in update api")
 	vars := mux.Vars(req)

@@ -28,6 +28,7 @@
   "paths": {
     "/servers": {
       "get": {
+        "summary": "Server",
         "description": "This will show all available asset by default.",
         "consumes": [
           "application/json"

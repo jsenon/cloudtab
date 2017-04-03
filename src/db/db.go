@@ -27,7 +27,7 @@ import (
 //
 // A Server have multiple information to be stored.
 //
-// swagger:model
+// swagger:model server
 type Server struct {
 	// ID Server Generated
 	ID bson.ObjectId `json:"id" bson:"_id,omitempty"`
