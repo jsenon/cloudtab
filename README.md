@@ -58,6 +58,16 @@ UPDATE API
 curl -X UPDATE -H  "Content-Type: application/json" -d @body_example_update.json http://localhost:9010/api/servers/YOURID
 ```
 
+### ScreenShot
+
+Main
+![Alt text](/img/main.png?raw=true "Main")
+
+Full Table View
+![Alt text](/img/fullview.png?raw=true "FullView")
+
+API Swagger Doc
+![Alt text](/img/api_swagger.png?raw=true "API Swagger")
 
 
 
