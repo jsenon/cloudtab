@@ -261,28 +261,26 @@
           "type": "string",
           "x-go-name": "AssetCode"
         },
-        "Building": {
-          "description": "Server Building",
-          "type": "string"
-        },
         "CMDBName": {
           "description": "Server Name",
-          "type": "string"
-        },
-        "CPU": {
-          "description": "Server CPU Speed",
           "type": "string"
         },
         "Function": {
           "description": "Server Function",
           "type": "string"
         },
+        "Hardwarerows": {
+          "description": "Server Hardware Definition",
+          "x-go-name": "HardwareDefinition",
+          "$ref": "#/definitions/HardwareDefinition"
+        },
         "InsertTime": {
           "description": "Server Insert Time"
         },
-        "Model": {
-          "description": "Server Model",
-          "type": "string"
+        "Localisationrows": {
+          "description": "Server Localisation",
+          "x-go-name": "Localisation",
+          "$ref": "#/definitions/Localisation"
         },
         "Networksrows": {
           "description": "Server Network Definition",
@@ -292,20 +290,8 @@
           },
           "x-go-name": "Networking"
         },
-        "RAM": {
-          "description": "Server Memory",
-          "type": "string"
-        },
-        "Rack": {
-          "description": "Server Rack",
-          "type": "string"
-        },
         "Remarks": {
           "description": "Remark associate to server",
-          "type": "string"
-        },
-        "Room": {
-          "description": "Server Room",
           "type": "string"
         },
         "SerialNumber": {

@@ -40,9 +40,9 @@ type Server struct {
 	// Server Asset Code
 	AssetCode string `json:"Assetcode" `
 	// Server Hardware Definition
-	HardwareDefinition `json:"Hardwarerows"`
+	HardwareDefinition HardwareDefinition `json:"Hardwarerows"`
 	// Server Localisation
-	Localisation `json:"Localisationrows"`
+	Localisation Localisation `json:"Localisationrows"`
 	// Server Network Definition
 	Networking []Networks `json:"Networksrows"`
 	// Remark associate to server

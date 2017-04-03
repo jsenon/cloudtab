@@ -141,6 +141,7 @@
 						<td>
 							{{.AssetCode}}
 						</td>
+						{{with .HardwareDefinition}}
 						<td class="hidden">
 							{{.Model}}
 						</td>
@@ -150,6 +151,8 @@
 						<td class="hidden">
 							{{.RAM}}
 						</td>
+						{{end}}
+						{{with .Localisation}}
 						<td class="hidden">
 							{{.Room}}
 						</td>
@@ -159,6 +162,7 @@
 						<td class="hidden">
 							{{.Rack}}
 						</td>
+						{{end}}
 						<td>
 							{{.Remarks}}
 						</td>
