@@ -57,6 +57,30 @@
 			</br>
 			<div class="col-md-6" style="text-align: left;" >
 			<h2>Update Page</h2>
+
+			<tr>
+			ID: {{.ID.Hex}}</br>
+			NAME: {{.CMDBName}}</br>
+			Function: {{.Function}}</br>
+			SN: {{.SerialNumber}}</br>
+			AssetCode: {{.AssetCode}}</br>
+			</tr>
+			</br>
+
+
+			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" novalidate class="form-inline">
+				<label class="sr-only" for="inlineFormInput">CMDBName</label>
+				<input id="CMDBName" placeholder="{{.CMDBName}}" type="text" name="CMDBName" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CMDBName}}">
+				<label class="sr-only" for="inlineFormInput">Function</label>
+				<input  id="Function" placeholder="{{.Function}}"  type="text" name="Function" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Function}}">
+				<label class="sr-only" for="inlineFormInput">SerialNumber</label>
+				<input id="SerialNumber" placeholder="{{.SerialNumber}}" type="text" name="SerialNumber" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.SerialNumber}}">
+				<button class="btn btn-outline-primary" type="submit">Submit</button>
+			</form>
+
+
+
+
 			</div>
 			</br>
 			<footer class="footer">

@@ -66,6 +66,8 @@ func main() {
 
 	r.HandleFunc("/index", web.Index)
 	r.HandleFunc("/send", web.Send)
+	r.HandleFunc("/sendupdate/{id}", web.SendUpdate)
+
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
 	r.HandleFunc("/update/{id}", web.Update)
