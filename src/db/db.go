@@ -90,6 +90,7 @@ type Networks struct {
 
 var db *mgo.Database
 
+// Init connection to MongoDB
 func init() {
 	session, err := mgo.Dial("localhost")
 	if err != nil {
@@ -99,10 +100,12 @@ func init() {
 	db = session.DB("cloudtab")
 }
 
+// Link connection to a collection
 func collection() *mgo.Collection {
 	return db.C("items")
 }
 
+// Func to retrieve element server from collection
 func GetAll() ([]Server, error) {
 	res := []Server{}
 
@@ -113,6 +116,7 @@ func GetAll() ([]Server, error) {
 	return res, nil
 }
 
+// Func to add a server
 func Save(item Server) error {
 	return collection().Insert(item)
 }
@@ -128,9 +132,6 @@ func Update(key string, item string, values Networks) error {
 
 //Main Update func
 func Updatemain(key string, item Server) (error, error) {
-	// Func ONLY available for []network{} collection
-	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
-	// db.items.updateOne({cmdbname:"ServerTest99"},{$addToSet:{"networking": [ { "ipaddr" : "abcd", "patchpanel" : "abcd", "serverport" : "abcd", "switch" : "abcd", "vlan" : "abcd", "mac" : "abcdefg" } ]}})
 	err := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, item)
 
 	UpdateTime := time.Now()
@@ -140,6 +141,7 @@ func Updatemain(key string, item Server) (error, error) {
 	return err, erro
 }
 
+// Func to retrieve only one elements, used to get details about item
 func GetOne(id string) (*Server, error) {
 	res := Server{}
 
@@ -149,6 +151,7 @@ func GetOne(id string) (*Server, error) {
 	return &res, nil
 }
 
+// Func to remve a server form collection
 func Remove(id string) error {
 	return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 }
