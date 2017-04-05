@@ -116,26 +116,30 @@ func Update(res http.ResponseWriter, req *http.Request) {
 
 // Func call by update forms
 func SendUpdate(res http.ResponseWriter, req *http.Request) {
-	var CMDBName string
-	var Function string
-	var SerialNumber string
+
+	var server db.Server
+
+	// var CMDBName string
+	// var Function string
+	// var SerialNumber string
 	vars := mux.Vars(req)
 	id := vars["id"]
 
 	//
-	// Encode Form to JSON
+	// We need to pass Updatemain(key string , item db.Server)
 	//
 
 	fmt.Println(id)
 	req.ParseForm()
-	CMDBName = req.FormValue("CMDBName")
-	Function = req.FormValue("Function")
-	SerialNumber = req.FormValue("SerialNumber")
-
-	fmt.Println(CMDBName, Function, SerialNumber)
+	server.CMDBName = req.FormValue("CMDBName")
+	server.Function = req.FormValue("Function")
+	server.SerialNumber = req.FormValue("SerialNumber")
+	fmt.Println(server.CMDBName, server.Function, server.SerialNumber)
 
 	// Use Func Updatemain(id,Server)
-
+	if erro, err := db.Updatemain(id, server); err != nil && erro != nil {
+		return
+	}
 	http.Redirect(res, req, "/update/"+id, http.StatusSeeOther)
 }
 

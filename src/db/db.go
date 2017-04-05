@@ -121,6 +121,7 @@ func Save(item Server) error {
 	return collection().Insert(item)
 }
 
+// Func used to Update Network Part as it s a slice
 func Update(key string, item string, values Networks) error {
 	// Func ONLY available for []network{} collection
 	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})

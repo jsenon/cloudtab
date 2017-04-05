@@ -86,6 +86,7 @@ API Swagger Doc
 - [ ] Jwt implementation
 - [x] Add date insertion asset
 - [x] API Doc
+- [ ] Move to microservice (dockerize cloudtab and add redis)
 
 
 

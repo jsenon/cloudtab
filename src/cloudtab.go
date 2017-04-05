@@ -64,13 +64,14 @@ func main() {
 	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS", "PATCH"})
 
+	// Web Part
 	r.HandleFunc("/index", web.Index)
 	r.HandleFunc("/send", web.Send)
 	r.HandleFunc("/sendupdate/{id}", web.SendUpdate)
-
 	r.HandleFunc("/delete", web.Delete)
 	r.HandleFunc("/details/{id}", web.Details)
 	r.HandleFunc("/update/{id}", web.Update)
+	// Swagger
 	r.HandleFunc("/api", web.ApiHelp)
 
 	// Login
