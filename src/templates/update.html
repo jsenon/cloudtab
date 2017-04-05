@@ -35,6 +35,9 @@
 		th {
 			cursor:n-resize;
 		}
+		legend {
+			font-size: 18px;
+		}
 		</style>
 	</head>
 
@@ -55,27 +58,111 @@
 				</li>
 			</ul>
 			</br>
-			<div class="col-md-6" style="text-align: left;" >
+
+			<div class="col-md-4" style="text-align: left;" >
 			<h2>Update Page</h2>
-
-			<tr>
-			ID: {{.ID.Hex}}</br>
-			NAME: {{.CMDBName}}</br>
-			Function: {{.Function}}</br>
-			SN: {{.SerialNumber}}</br>
-			AssetCode: {{.AssetCode}}</br>
-			</tr>
 			</br>
+			</div>
 
-
-			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" novalidate class="form-inline">
-				<label class="sr-only" for="inlineFormInput">CMDBName</label>
+			<div class="col-md-4" style="text-align: left;" >
+			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
+				<fieldset >
+				<legend>Server Identification</legend>
+				<label class="sr-only">CMDBName</label>
 				<input id="CMDBName" placeholder="{{.CMDBName}}" type="text" name="CMDBName" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CMDBName}}">
-				<label class="sr-only" for="inlineFormInput">Function</label>
+				<label class="sr-only">Function</label>
 				<input  id="Function" placeholder="{{.Function}}"  type="text" name="Function" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Function}}">
 				<label class="sr-only" for="inlineFormInput">SerialNumber</label>
 				<input id="SerialNumber" placeholder="{{.SerialNumber}}" type="text" name="SerialNumber" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.SerialNumber}}">
-				<button class="btn btn-outline-primary" type="submit">Submit</button>
+				<label class="sr-only" for="inlineFormInput">AssetCode</label>
+				<input id="AssetCode" placeholder="{{.AssetCode}}" type="text" name="AssetCode" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.AssetCode}}">
+				</fieldset>
+				</br>
+			</div>
+
+			<div class="col-md-4" style="text-align: left;" >
+				<fieldset>
+				<legend>Hardware Info</legend>
+				{{with .HardwareDefinition}}
+				<label class="sr-only" for="inlineFormInput">ServerModel</label>
+				<input id="ServerModel" placeholder="{{.Model}}" type="text" name="ServerModel" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Model}}">
+				<label class="sr-only" for="inlineFormInput">ServerCPU</label>
+				<input id="ServerCPU" placeholder="{{.CPU}}" type="text" name="ServerCPU" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CPU}}">
+				<label class="sr-only" for="inlineFormInput">ServerRAM</label>
+				<input id="ServerRAM" placeholder="{{.RAM}}" type="text" name="ServerRAM" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.RAM}}">
+				{{end}}
+				</fieldset>
+				</br>
+			</div>
+
+			<div class="col-md-4" style="text-align: left;" >
+				<fieldset>
+				<legend>Localization</legend>
+				{{with .Localisation}}
+				<label class="sr-only" for="inlineFormInput">ServerRoom</label>
+				<input id="ServerRoom" placeholder="{{.Room}}" type="text" name="ServerRoom" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Room}}">
+				<label class="sr-only" for="inlineFormInput">ServerBuilding</label>
+				<input id="ServerBuilding" placeholder="{{.Building}}" type="text" name="ServerBuilding" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Building}}">
+				<label class="sr-only" for="inlineFormInput">ServerRack</label>
+				<input id="ServerRack" placeholder="{{.Rack}}" type="text" name="ServerRack" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Rack}}">
+				{{end}}
+				</fieldset>
+				</br>
+			</div>
+
+			<div class="col-md-10" style="text-align: left;" >
+				<fieldset>
+				<legend>Networks</legend>
+				<table style="width:100%">
+				<tr>
+					<th> IP </th>
+					<th> Patch Panel </th>
+					<th> Server Port </th>
+					<th> Switch </th>
+					<th> Vlan </th>
+					<th> Mac </th>
+				</tr>
+				{{range .Networking}}
+				<tr>
+					<td>
+						{{.IpAddr}}
+					</td>
+					<td>
+						{{.PatchPanel}}
+					</td>
+					<td>
+						{{.ServerPort}}
+					</td>
+					<td>
+						{{.Switch}}
+					</td>
+					<td>
+						{{.Vlan}}
+					</td>
+					<td>
+						{{.MAC}}
+					</td>
+				</tr>
+				{{end}}
+				</table>
+				</br>
+			</div>
+
+			<div class="col-md-4" style="text-align: left;" >
+				<fieldset>
+				<legend>Other</legend>
+				<label class="sr-only" for="inlineFormInput">Remarks</label>
+				<input id="Remarks" placeholder="{{.Remarks}}" type="text" name="Remarks" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Remarks}}">
+				<label class="sr-only" for="inlineFormInput">Status</label>
+				<input id="Status" placeholder="{{.Status}}" type="text" name="Status" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Status}}">
+				</fieldset>
+				</br>
+			</div>
+
+			<div class="col-md-6" style="text-align: left;" >
+				<button class="btn btn-outline-primary" type="submit">Update</button>
+				<button class="btn btn-outline-danger" type="reset">Reset</button>
+			</div>
 			</form>
 
 

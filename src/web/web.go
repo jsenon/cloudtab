@@ -17,6 +17,7 @@ package web
 import (
 	"html/template"
 	"net/http"
+	"time"
 	// "strconv"
 
 	"db"
@@ -134,6 +135,17 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 	server.CMDBName = req.FormValue("CMDBName")
 	server.Function = req.FormValue("Function")
 	server.SerialNumber = req.FormValue("SerialNumber")
+	server.AssetCode = req.FormValue("AssetCode")
+	server.HardwareDefinition.Model = req.FormValue("ServerModel")
+	server.HardwareDefinition.CPU = req.FormValue("ServerCPU")
+	server.HardwareDefinition.RAM = req.FormValue("ServerRAM")
+	server.Localisation.Room = req.FormValue("ServerRoom")
+	server.Localisation.Building = req.FormValue("ServerBuilding")
+	server.Localisation.Rack = req.FormValue("ServerRack")
+	server.Remarks = req.FormValue("Remarks")
+	server.Status = req.FormValue("Status")
+	server.UpdateTime = time.Now()
+
 	fmt.Println(server.CMDBName, server.Function, server.SerialNumber)
 
 	// Use Func Updatemain(id,Server)
