@@ -68,6 +68,7 @@
 			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
 				<fieldset >
 				<legend>Server Identification</legend>
+				ID: {{.ID.Hex}}</p>
 				<label class="sr-only">CMDBName</label>
 				<input id="CMDBName" placeholder="{{.CMDBName}}" type="text" name="CMDBName" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CMDBName}}">
 				<label class="sr-only">Function</label>
@@ -149,10 +150,13 @@
 			</div>
 
 
-			<!-- <div class="col-md-4" style="text-align: left;" >
-			<input id="Networking.IpAddr" type="text" name="Networking.IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0">
-
-			</div> -->
+			<div class="col-md-4" style="text-align: left;" >
+			<fieldset>
+			<legend>NetworksUpdate Temporary</legend>
+			{{range .Networking}}
+			<input id="Networking.IpAddr" placeholder="{{.IpAddr}}" type="text" name=".IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0">
+			{{end}}
+			</div>
 
 
 			<div class="col-md-4" style="text-align: left;" >

@@ -16,7 +16,7 @@
 package db
 
 import (
-	// "fmt"
+	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -134,6 +134,7 @@ func Update(key string, item string, values Networks) error {
 //Main Update func
 func Updatemain(key string, item Server) (error, error) {
 	err := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, item)
+	fmt.Println(item)
 
 	UpdateTime := time.Now()
 	erro := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$set": bson.M{"UpdateTime": UpdateTime}})

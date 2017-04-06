@@ -148,7 +148,8 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Println("ServerDecode:", serverdecode.Networking)
+	fmt.Println("ServerDecode:", serverdecode)
+	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
 	fmt.Println("CMDBName", serverdecode.CMDBName)
 	fmt.Println("err:", err)
 
