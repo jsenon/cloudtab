@@ -16,7 +16,7 @@
 package db
 
 import (
-	"fmt"
+	// "fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -127,7 +127,7 @@ func Update(key string, item string, values Networks) error {
 	// return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 	// db.items.updateOne({cmdbname:"ServerTest99"},{$addToSet:{"networking": [ { "ipaddr" : "abcd", "patchpanel" : "abcd", "serverport" : "abcd", "switch" : "abcd", "vlan" : "abcd", "mac" : "abcdefg" } ]}})
 	_, err := collection().Upsert(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$addToSet": bson.M{item: values}})
-	fmt.Println(err, key, bson.ObjectIdHex(key), item, values)
+	// fmt.Println(err, key, bson.ObjectIdHex(key), item, values)
 	return err
 }
 
@@ -137,7 +137,7 @@ func Updatemain(key string, item Server) (error, error) {
 
 	UpdateTime := time.Now()
 	erro := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$set": bson.M{"UpdateTime": UpdateTime}})
-	fmt.Println(erro, UpdateTime)
+	// fmt.Println(erro, UpdateTime)
 
 	return err, erro
 }

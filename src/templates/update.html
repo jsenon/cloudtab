@@ -85,11 +85,11 @@
 				<legend>Hardware Info</legend>
 				{{with .HardwareDefinition}}
 				<label class="sr-only" for="inlineFormInput">ServerModel</label>
-				<input id="ServerModel" placeholder="{{.Model}}" type="text" name="ServerModel" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Model}}">
+				<input id="ServerModel" placeholder="{{.Model}}" type="text" name="HardwareDefinition.Model" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Model}}">
 				<label class="sr-only" for="inlineFormInput">ServerCPU</label>
-				<input id="ServerCPU" placeholder="{{.CPU}}" type="text" name="ServerCPU" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CPU}}">
+				<input id="ServerCPU" placeholder="{{.CPU}}" type="text" name="HardwareDefinition.CPU" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CPU}}">
 				<label class="sr-only" for="inlineFormInput">ServerRAM</label>
-				<input id="ServerRAM" placeholder="{{.RAM}}" type="text" name="ServerRAM" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.RAM}}">
+				<input id="ServerRAM" placeholder="{{.RAM}}" type="text" name="HardwareDefinition.RAM" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.RAM}}">
 				{{end}}
 				</fieldset>
 				</br>
@@ -100,11 +100,11 @@
 				<legend>Localization</legend>
 				{{with .Localisation}}
 				<label class="sr-only" for="inlineFormInput">ServerRoom</label>
-				<input id="ServerRoom" placeholder="{{.Room}}" type="text" name="ServerRoom" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Room}}">
+				<input id="ServerRoom" placeholder="{{.Room}}" type="text" name="Localisation.Room" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Room}}">
 				<label class="sr-only" for="inlineFormInput">ServerBuilding</label>
-				<input id="ServerBuilding" placeholder="{{.Building}}" type="text" name="ServerBuilding" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Building}}">
+				<input id="ServerBuilding" placeholder="{{.Building}}" type="text" name="Localisation.Building" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Building}}">
 				<label class="sr-only" for="inlineFormInput">ServerRack</label>
-				<input id="ServerRack" placeholder="{{.Rack}}" type="text" name="ServerRack" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Rack}}">
+				<input id="ServerRack" placeholder="{{.Rack}}" type="text" name="Localisation.Rack" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.Rack}}">
 				{{end}}
 				</fieldset>
 				</br>
@@ -148,6 +148,13 @@
 				</br>
 			</div>
 
+
+			<!-- <div class="col-md-4" style="text-align: left;" >
+			<input id="Networking.IpAddr" type="text" name="Networking.IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0">
+
+			</div> -->
+
+
 			<div class="col-md-4" style="text-align: left;" >
 				<fieldset>
 				<legend>Other</legend>
@@ -160,6 +167,8 @@
 			</div>
 
 			<div class="col-md-6" style="text-align: left;" >
+				Created at: {{.InsertTime}}</p>
+				Updated at: {{.UpdateTime}}</p>
 				<button class="btn btn-outline-primary" type="submit">Update</button>
 				<button class="btn btn-outline-danger" type="reset">Reset</button>
 			</div>

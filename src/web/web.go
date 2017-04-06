@@ -25,6 +25,8 @@ import (
 
 	// "encoding/json"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/schema"
+
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -118,40 +120,38 @@ func Update(res http.ResponseWriter, req *http.Request) {
 // Func call by update forms
 func SendUpdate(res http.ResponseWriter, req *http.Request) {
 
-	var server db.Server
-
+	var serverdecode db.Server
+	// serverdecode := new(db.Server)
 	// var CMDBName string
 	// var Function string
 	// var SerialNumber string
 	vars := mux.Vars(req)
 	id := vars["id"]
 
+	// Use gorilla schema packages that fills a struct with form values
+
+	decoder := schema.NewDecoder()
+	fmt.Println(id)
+	req.ParseForm()
+
+	err := decoder.Decode(&serverdecode, req.PostForm)
+	if err != nil {
+		// Handle error
+	}
+
+	serverdecode.UpdateTime = time.Now()
+
 	//
 	// We need to pass Updatemain(key string , item db.Server)
 	//
-
-	fmt.Println(id)
-	req.ParseForm()
-	server.CMDBName = req.FormValue("CMDBName")
-	server.Function = req.FormValue("Function")
-	server.SerialNumber = req.FormValue("SerialNumber")
-	server.AssetCode = req.FormValue("AssetCode")
-	server.HardwareDefinition.Model = req.FormValue("ServerModel")
-	server.HardwareDefinition.CPU = req.FormValue("ServerCPU")
-	server.HardwareDefinition.RAM = req.FormValue("ServerRAM")
-	server.Localisation.Room = req.FormValue("ServerRoom")
-	server.Localisation.Building = req.FormValue("ServerBuilding")
-	server.Localisation.Rack = req.FormValue("ServerRack")
-	server.Remarks = req.FormValue("Remarks")
-	server.Status = req.FormValue("Status")
-	server.UpdateTime = time.Now()
-
-	fmt.Println(server.CMDBName, server.Function, server.SerialNumber)
-
-	// Use Func Updatemain(id,Server)
-	if erro, err := db.Updatemain(id, server); err != nil && erro != nil {
+	if erro, err := db.Updatemain(id, serverdecode); err != nil && erro != nil {
 		return
 	}
+
+	fmt.Println("ServerDecode:", serverdecode.Networking)
+	fmt.Println("CMDBName", serverdecode.CMDBName)
+	fmt.Println("err:", err)
+
 	http.Redirect(res, req, "/update/"+id, http.StatusSeeOther)
 }
 
