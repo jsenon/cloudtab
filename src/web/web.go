@@ -139,6 +139,15 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 		// Handle error
 	}
 
+	fmt.Println("ServerDecode:", serverdecode)
+	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
+
+	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking[0].IpAddr)
+	for _, net := range serverdecode.Networking {
+		fmt.Println(net)
+	}
+	fmt.Println("CMDBName", serverdecode.CMDBName)
+
 	serverdecode.UpdateTime = time.Now()
 
 	//
@@ -148,9 +157,6 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Println("ServerDecode:", serverdecode)
-	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
-	fmt.Println("CMDBName", serverdecode.CMDBName)
 	fmt.Println("err:", err)
 
 	http.Redirect(res, req, "/update/"+id, http.StatusSeeOther)

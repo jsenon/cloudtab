@@ -123,39 +123,30 @@
 					<th> Vlan </th>
 					<th> Mac </th>
 				</tr>
-				{{range .Networking}}
+				{{range $index, $element := .Networking}}
 				<tr>
 					<td>
-						{{.IpAddr}}
+					<input id="Networking.IpAddr" placeholder="{{$element.IpAddr}}" type="text" name="Networking.{{$index}}.IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.IpAddr}}">
 					</td>
 					<td>
-						{{.PatchPanel}}
+					<input id="Networking.PatchPanel" placeholder="{{$element.PatchPanel}}" type="text" name="Networking.{{$index}}.PatchPanel" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.PatchPanel}}">
 					</td>
 					<td>
-						{{.ServerPort}}
+					<input id="Networking.ServerPort" placeholder="{{$element.ServerPort}}" type="text" name="Networking.{{$index}}.ServerPort" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.ServerPort}}">
 					</td>
 					<td>
-						{{.Switch}}
+					<input id="Networking.Switch" placeholder="{{$element.Switch}}" type="text" name="Networking.{{$index}}.Switch" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.Switch}}">
 					</td>
 					<td>
-						{{.Vlan}}
+					<input id="Networking.Vlan" placeholder="{{$element.Vlan}}" type="text" name="Networking.{{$index}}.Vlan" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.Vlan}}">
 					</td>
 					<td>
-						{{.MAC}}
+					<input id="Networking.MAC" placeholder="{{$element.MAC}}" type="text" name="Networking.{{$index}}.MAC" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.MAC}}">
 					</td>
 				</tr>
 				{{end}}
 				</table>
 				</br>
-			</div>
-
-
-			<div class="col-md-4" style="text-align: left;" >
-			<fieldset>
-			<legend>NetworksUpdate Temporary</legend>
-			{{range .Networking}}
-			<input id="Networking.IpAddr" placeholder="{{.IpAddr}}" type="text" name=".IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0">
-			{{end}}
 			</div>
 
 
