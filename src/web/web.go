@@ -130,6 +130,9 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 	fmt.Println(id)
 	req.ParseForm()
 
+	// Temp Update Net
+	// var ipdyn db.Server
+
 	err := decoder.Decode(&serverdecode, req.PostForm)
 	if err != nil {
 		// Handle error

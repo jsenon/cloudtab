@@ -48,14 +48,9 @@
 			var divtest = document.createElement("div");
 			divtest.setAttribute("class", "form-inline removeclass"+room);
 			var rdiv = 'removeclass'+room;
-			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="ip" value="" placeholder="ip"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
+			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="pp" value="pp" placeholder="pp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sp" value="sp" placeholder="sp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sw" value="sw" placeholder="sw"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlan" value="vlan" placeholder="vlan"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="mac" value="mac" placeholder="mac"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
 
 			objTo.appendChild(divtest)
-
-
-
-
-
 		}
 		function remove_networks_fields(rid) {
 		   $('.removeclass'+rid).remove();
@@ -177,14 +172,10 @@
 				{{end}}
 				</table>
 				</br>
-				<div class="form-group">
-						<button class="btn btn-outline-primary add-more" id="add-more" type="button" onclick="networks_fields();">+</button>
-				</div>
-				<div id="networks_fields" class="form-inline">
-				</div>
-				</br>
-				</fieldset>
+				</fieldset>				
 			</div>
+
+			
 
 			<div class="col-md-8" style="text-align: left;" >
 				<fieldset>
@@ -199,6 +190,20 @@
 				</br>
 			</div>
 
+			<!-- <div class="col-md-12" style="text-align: left;" >
+				<fieldset>
+					<legend>Add Network</legend>
+					<div id="networks_fields" class="form-inline">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-outline-primary add-more" id="add-more" type="button" onclick="networks_fields();">+</button>
+					</div>
+					<div id="networks_fields" class="form-inline">
+					</div>
+					</br>
+				</fieldset>
+			</div> -->
+
 			<div class="col-md-8" style="text-align: left;" >
 				Created at: {{.InsertTime}}</br>
 				Updated at: {{.UpdateTime}}</br>
@@ -206,8 +211,13 @@
 				<button class="btn btn-outline-primary" type="submit">Update</button>
 				<button class="btn btn-outline-danger" type="reset">Reset</button>
 			</div>
-			</form>
+			</br>
 
+
+			
+
+
+			</form>
 
 			</div>
 			</br>
