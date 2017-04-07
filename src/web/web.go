@@ -121,15 +121,11 @@ func Update(res http.ResponseWriter, req *http.Request) {
 func SendUpdate(res http.ResponseWriter, req *http.Request) {
 
 	var serverdecode db.Server
-	// serverdecode := new(db.Server)
-	// var CMDBName string
-	// var Function string
-	// var SerialNumber string
+
 	vars := mux.Vars(req)
 	id := vars["id"]
 
 	// Use gorilla schema packages that fills a struct with form values
-
 	decoder := schema.NewDecoder()
 	fmt.Println(id)
 	req.ParseForm()
@@ -139,8 +135,8 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 		// Handle error
 	}
 
-	fmt.Println("ServerDecode:", serverdecode)
-	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
+	// fmt.Println("ServerDecode:", serverdecode)
+	// fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
 
 	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking[0].IpAddr)
 	for _, net := range serverdecode.Networking {
