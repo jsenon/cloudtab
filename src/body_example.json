@@ -32,4 +32,39 @@
 	}],
 	"Remarks": "MyRermarks",
 	"Status": "In Progress"
+},
+{
+	"CMDBName": "ServerTest87",
+	"Function": "ATesting Server",
+	"SerialNumber": "79",
+	"AssetCode": "123fdfsdf",
+	"Hardwarerows": {
+		"Model": "DL380",
+		"CPU": "2,6",
+		"RAM": "768"
+	},
+	"Localisationrows": {
+		"Room": "K",
+		"Building": "M88",
+		"Rack": "m88adcs4"
+	},
+	"Networksrows": [{
+		"IpAddr": "abc",
+		"PatchPanel": "abc",
+		"ServerPort": "abc",
+		"Switch": "abc",
+		"Vlan": "abc",
+		"MAC": "abc"
+	},
+	{
+		"IpAddr": "def",
+		"PatchPanel": "def",
+		"ServerPort": "def",
+		"Switch": "def",
+		"Vlan": "def",
+		"MAC": "def"
+
+	}],
+	"Remarks": "MyRermarks",
+	"Status": "In Progress"
 }
