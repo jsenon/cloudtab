@@ -130,22 +130,10 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 	fmt.Println(id)
 	req.ParseForm()
 
-	// Temp Update Net
-	// var ipdyn db.Server
-
 	err := decoder.Decode(&serverdecode, req.PostForm)
 	if err != nil {
 		// Handle error
 	}
-
-	// fmt.Println("ServerDecode:", serverdecode)
-	// fmt.Println("ServerDecodeNetwork:", serverdecode.Networking)
-
-	fmt.Println("ServerDecodeNetwork:", serverdecode.Networking[0].IpAddr)
-	for _, net := range serverdecode.Networking {
-		fmt.Println(net)
-	}
-	fmt.Println("CMDBName", serverdecode.CMDBName)
 
 	serverdecode.UpdateTime = time.Now()
 
@@ -165,4 +153,15 @@ func SendUpdate(res http.ResponseWriter, req *http.Request) {
 func ApiHelp(res http.ResponseWriter, req *http.Request) {
 	// URL To be changed
 	http.Redirect(res, req, "/swagger.html?url=http://localhost:9010/swaggermain.json", http.StatusSeeOther)
+}
+
+func NetUpdate(res http.ResponseWriter, req *http.Request) {
+	vars := mux.Vars(req)
+	id := vars["id"]
+	rs, err := db.GetOne(id)
+	if err != nil {
+		return
+	}
+	t, _ := template.ParseFiles("templates/netupdate.html")
+	t.Execute(res, rs)
 }
