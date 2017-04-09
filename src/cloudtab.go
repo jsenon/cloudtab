@@ -72,6 +72,7 @@ func main() {
 	r.HandleFunc("/details/{id}", web.Details)
 	r.HandleFunc("/update/{id}", web.Update)
 	r.HandleFunc("/netupdate/{id}", web.NetUpdate)
+	r.HandleFunc("/sendnetupdate/{id}", web.SendNetUpdate)
 
 	// Swagger
 	r.HandleFunc("/api", web.ApiHelp)

@@ -165,3 +165,23 @@ func NetUpdate(res http.ResponseWriter, req *http.Request) {
 	t, _ := template.ParseFiles("templates/netupdate.html")
 	t.Execute(res, rs)
 }
+
+func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
+
+	var serverdecode db.Server
+
+	vars := mux.Vars(req)
+	id := vars["id"]
+
+	// Use gorilla schema packages that fills a struct with form values
+	decoder := schema.NewDecoder()
+	fmt.Println(id)
+	req.ParseForm()
+
+	err := decoder.Decode(&serverdecode, req.PostForm)
+	if err != nil {
+		// Handle error
+	}
+	http.Redirect(res, req, "/netupdate/"+id, http.StatusSeeOther)
+
+}

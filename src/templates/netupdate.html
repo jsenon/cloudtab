@@ -84,7 +84,7 @@
 			</div>
 
 			<div class="col-md-8" style="text-align: left;" >
-			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
+			<form action="/sendnetupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
 				<fieldset >
 				<legend>Server Identification</legend>
 				ID: {{.ID.Hex}}</p>
@@ -132,7 +132,7 @@
 				</fieldset>				
 			</div>
 
-			<!-- <div class="col-md-12" style="text-align: left;" >
+			<div class="col-md-12" style="text-align: left;" >
 				<fieldset>
 					<legend>Add Network</legend>
 					<div id="networks_fields" class="form-inline">
@@ -144,7 +144,7 @@
 					</div>
 					</br>
 				</fieldset>
-			</div> -->
+			</div>
 
 			<div class="col-md-8" style="text-align: left;" >
 				Created at: {{.InsertTime}}</br>
