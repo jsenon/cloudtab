@@ -87,7 +87,7 @@
 			<form action="/sendupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
 				<fieldset >
 				<legend>Server Identification</legend>
-				ID: {{.ID.Hex}}</p>
+					<a href="/details/{{.ID.Hex}}">ID: {{.ID.Hex}} </a></br></p>
 					<div class="form-inline">
 						<label class="sr-only">CMDBName</label>
 						<input id="CMDBName" placeholder="{{.CMDBName}}" type="text" name="CMDBName" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{.CMDBName}}">
