@@ -169,14 +169,22 @@ func NetUpdate(res http.ResponseWriter, req *http.Request) {
 func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 
 	var serverdecode db.Server
+	var ipdyn string
+	var ipdyn2 string
 
 	vars := mux.Vars(req)
 	id := vars["id"]
 
 	// Use gorilla schema packages that fills a struct with form values
 	decoder := schema.NewDecoder()
-	fmt.Println(id)
 	req.ParseForm()
+
+	fmt.Println(id)
+	ipdyn = req.FormValue("ipdyn")
+	ipdyn2 = req.FormValue("ipdyn2")
+
+	fmt.Println("ipdynamique", ipdyn)
+	fmt.Println("ipdynamique2", ipdyn2)
 
 	err := decoder.Decode(&serverdecode, req.PostForm)
 	if err != nil {

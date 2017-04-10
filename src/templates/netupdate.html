@@ -40,16 +40,18 @@
 		}
 		</style>
 
+		<!-- Javascript used to add dynamically network fields -->
 		<script type="text/javascript">
 		var room = 1;
+		var counter = 0;
 		function networks_fields() {
 			room++;
 			var objTo = document.getElementById('networks_fields')
 			var divtest = document.createElement("div");
 			divtest.setAttribute("class", "form-inline removeclass"+room);
 			var rdiv = 'removeclass'+room;
-			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="pp" value="pp" placeholder="pp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sp" value="sp" placeholder="sp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sw" value="sw" placeholder="sw"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlan" value="vlan" placeholder="vlan"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="mac" value="mac" placeholder="mac"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
-
+			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn'+ counter +'" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="patch'+ counter +'" id="patch" value="patch" placeholder="patch"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
+			counter++;
 			objTo.appendChild(divtest)
 		}
 		function remove_networks_fields(rid) {
@@ -57,6 +59,9 @@
 		}
 
 		</script>
+
+
+
 
 	</head>
 
@@ -84,8 +89,8 @@
 			</div>
 
 			<div class="col-md-8" style="text-align: left;" >
-			<form action="/sendnetupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
-				<fieldset >
+			<form id="myForm" action="/sendnetupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
+				<!-- <fieldset >
 				<legend>Server Identification</legend>
 				ID: {{.ID.Hex}}</p>
 					
@@ -130,7 +135,7 @@
 				</table>
 				</br>
 				</fieldset>				
-			</div>
+			</div> -->
 
 			<div class="col-md-12" style="text-align: left;" >
 				<fieldset>
@@ -145,6 +150,12 @@
 					</br>
 				</fieldset>
 			</div>
+
+
+			<div class="col-md-2" style="text-align: left;" >
+			<input id="ipdyn2" placeholder="ipdyn2" type="text" name="ipdyn2" class="form-control mb-2 mr-sm-2 mb-sm-0" value="ipdyn2">
+			</div>
+
 
 			<div class="col-md-8" style="text-align: left;" >
 				Created at: {{.InsertTime}}</br>
