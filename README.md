@@ -78,6 +78,7 @@ API Swagger Doc
 - [x] Web part to view details
 - [x] Web part Update
 - [x] Web part add network func
+- [ ] Web part delete network func
 - [x] API part Update
 - [ ] Import CSV
 - [x] Detail Select Column to show
