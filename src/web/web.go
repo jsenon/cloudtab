@@ -185,18 +185,22 @@ func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 	valuesvlan := req.Form["vlan"]
 	valuesmac := req.Form["mac"]
 	serverport := "12"
-	updatetime := time.Now()
 
 	// Take into account that ip is mandatory and always set
 	for i := range valuesip {
+		// fmt.Println("x:", x)
 		// fmt.Println("ipdynamique:", valuesip[i])
 		// fmt.Println("pp:", valuespp[i])
 		// fmt.Println("switch:", valuessw[i])
 		// fmt.Println("vlan:", valuesvlan[i])
 		// fmt.Println("mac:", valuesmac[i])
-		item := db.Server{ID: bson.ObjectIdHex(id), Networking: []db.Networks{{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}}, UpdateTime: updatetime}
-		fmt.Println("item:", item)
-		if erro, err := db.Updatemain(id, item); err != nil && erro != nil {
+		net := db.Networks{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}
+		fmt.Println("net:", net)
+		// item := db.Server{ID: bson.ObjectIdHex(id), Networking: []db.Networks{{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}}}
+		// if erro, err := db.Updatemain(id, item); err != nil && erro != nil {
+		// 	return
+		// }
+		if err := db.Update(id, "networking", net); err != nil {
 			return
 		}
 	}

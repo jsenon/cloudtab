@@ -87,9 +87,9 @@
 			<h2>Update Page</h2>
 			</br>
 			</div>
-
-			<div class="col-md-8" style="text-align: left;" >
 			<form id="myForm" action="/sendnetupdate/{{.ID.Hex}}" method="POST" accept-charset="UTF-8" >
+
+			<!-- <div class="col-md-8" style="text-align: left;" > -->
 				<!-- <fieldset >
 				<legend>Server Identification</legend>
 				ID: {{.ID.Hex}}</p>
@@ -137,36 +137,82 @@
 				</fieldset>				
 			</div> -->
 
-			<div class="col-md-12" style="text-align: left;" >
-				<fieldset>
-					<legend>Add Network</legend>
-					<div id="networks_fields" class="form-inline">
-					</div>
-					<div class="form-group">
-						<button class="btn btn-outline-primary add-more" id="add-more" type="button" onclick="networks_fields();">+</button>
-					</div>
-					<div id="networks_fields" class="form-inline">
-					</div>
-					</br>
-				</fieldset>
-			</div>
+				<div class="col-md-12" style="text-align: left;" >
+					<fieldset>
+						<legend>Add Network</legend>
+						<div id="networks_fields" class="form-inline">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-outline-primary add-more" id="add-more" type="button" onclick="networks_fields();">+</button>
+						</div>
+						<div id="networks_fields" class="form-inline">
+						</div>
+						</br>
+					</fieldset>
+				</div>
 
-
-			
-			<div class="col-md-8" style="text-align: left;" >
-				Created at: {{.InsertTime}}</br>
-				Updated at: {{.UpdateTime}}</br>
-				</br>
+				<div class="col-md-8" style="text-align: left;" >
 				<button class="btn btn-outline-primary" type="submit">Update</button>
 				<button class="btn btn-outline-danger" type="reset">Reset</button>
 			</div>
 			</br>
 
-
-			
-
-
 			</form>
+
+			<div class="col-md-8" style="text-align: left;" >
+				<fieldset >
+				<legend>Server Identification</legend>
+				ID: {{.ID.Hex}}</p>
+					
+				</fieldset>
+				</br>
+			</div>
+
+			<div class="col-md-12" style="text-align: left;" >
+				<fieldset>
+				<legend>Networks</legend>
+				<table style="width:100%">
+				<tr>
+					<th> IP </th>
+					<th> Patch Panel </th>
+					<th> Server Port </th>
+					<th> Switch </th>
+					<th> Vlan </th>
+					<th> Mac </th>
+				</tr>
+				{{range $index, $element := .Networking}}
+				<tr>
+					<td>
+						<input id="Networking.IpAddr" placeholder="{{$element.IpAddr}}" type="text" name="Networking.{{$index}}.IpAddr" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.IpAddr}}">
+					</td>
+					<td>
+						<input id="Networking.PatchPanel" placeholder="{{$element.PatchPanel}}" type="text" name="Networking.{{$index}}.PatchPanel" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.PatchPanel}}">
+					</td>
+					<td>
+						<input id="Networking.ServerPort" placeholder="{{$element.ServerPort}}" type="text" name="Networking.{{$index}}.ServerPort" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.ServerPort}}">
+					</td>
+					<td>
+						<input id="Networking.Switch" placeholder="{{$element.Switch}}" type="text" name="Networking.{{$index}}.Switch" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.Switch}}">
+					</td>
+					<td>
+						<input id="Networking.Vlan" placeholder="{{$element.Vlan}}" type="text" name="Networking.{{$index}}.Vlan" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.Vlan}}">
+					</td>
+					<td>
+						<input id="Networking.MAC" placeholder="{{$element.MAC}}" type="text" name="Networking.{{$index}}.MAC" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.MAC}}">
+					</td>
+				</tr>
+				{{end}}
+				</table>
+				</br>
+				</fieldset>				
+			</div>
+			
+			<div class="col-md-8" style="text-align: left;" >
+				Created at: {{.InsertTime}}</br>
+				Updated at: {{.UpdateTime}}</br>
+				</br>
+			</div>
+
 
 			</div>
 			</br>
