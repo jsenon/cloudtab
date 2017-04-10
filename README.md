@@ -77,7 +77,7 @@ API Swagger Doc
 - [x] Package for struct JSON Server
 - [x] Web part to view details
 - [x] Web part Update
-- [ ] Web part add network func
+- [x] Web part add network func
 - [x] API part Update
 - [ ] Import CSV
 - [x] Detail Select Column to show
