@@ -169,8 +169,6 @@ func NetUpdate(res http.ResponseWriter, req *http.Request) {
 func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 
 	var serverdecode db.Server
-	var ipdyn string
-	var ipdyn2 string
 
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -180,11 +178,29 @@ func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 
 	fmt.Println(id)
-	ipdyn = req.FormValue("ipdyn")
-	ipdyn2 = req.FormValue("ipdyn2")
 
-	fmt.Println("ipdynamique", ipdyn)
-	fmt.Println("ipdynamique2", ipdyn2)
+	valuesip := req.Form["ipdyn"]
+	valuespp := req.Form["pp"]
+	valuessw := req.Form["sw"]
+	valuesvlan := req.Form["vlan"]
+	valuesmac := req.Form["mac"]
+
+	// Take into account that ip is mandatory and always set
+	for i := range valuesip {
+		fmt.Println("ipdynamique", valuesip[i])
+		fmt.Println("pp", valuespp[i])
+		fmt.Println("switch", valuessw[i])
+		fmt.Println("vlan", valuesvlan[i])
+		fmt.Println("mac", valuesmac[i])
+	}
+
+	// valuespp := req.Form["pp"]
+	// for i := range valuespp {
+	// 	fmt.Println("pp loop", valuespp[i])
+	// }
+
+	// We can write form to html
+	// fmt.Fprintln(res, req.Form)
 
 	err := decoder.Decode(&serverdecode, req.PostForm)
 	if err != nil {

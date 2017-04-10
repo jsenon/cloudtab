@@ -50,7 +50,7 @@
 			var divtest = document.createElement("div");
 			divtest.setAttribute("class", "form-inline removeclass"+room);
 			var rdiv = 'removeclass'+room;
-			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn'+ counter +'" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="patch'+ counter +'" id="patch" value="patch" placeholder="patch"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
+			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="pp" id="patch" value="patch" placeholder="patch"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="sw" id="switch" value="switch" placeholder="switch"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="vlan" id="vlan" value="vlan" placeholder="vlan"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="mac" id="mac" value="mac" placeholder="mac"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
 			counter++;
 			objTo.appendChild(divtest)
 		}
