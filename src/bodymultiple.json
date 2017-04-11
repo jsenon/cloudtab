@@ -1,74 +1,71 @@
-[
-    {
-        "CMDBName": "ServerTest99",
-        "Function": "ATesting Server",
-        "SerialNumber": "79",
-        "Assetcode": "123fdfsdf",
-        "Hardwarerows": {
-            "Model": "DL380",
-            "CPU": "2,6",
-            "RAM": "768"
-        },
-        "Localisationrows": {
-            "Room": "K",
-            "Building": "M88",
-            "Rack": "m88adcs4"
-        },
-        "Networksrows": [
-            {
-                "Ipaddr": "abc",
-                "Patchpanel": "abc",
-                "Serverport": "abc",
-                "Switch": "abc",
-                "Vlan": "abc",
-                "MAC": "abc"
-            },
-            {
-                "Ipaddr": "def",
-                "Patchpanel": "def",
-                "Serverport": "def",
-                "Switch": "def",
-                "Vlan": "def",
-                "MAC": "def"
-            },
-            {
-                "Ipaddr": "toto",
-                "Patchpanel": "patch",
-                "Serverport": "12",
-                "Switch": "switch",
-                "Vlan": "vlan",
-                "MAC": "mac"
-            }
-        ],
-        "Remarks": "MyRermarks",
-        "Status": "In Progress"
+[{
+    "CMDBName": "ServerTest99",
+    "Function": "ATesting Server",
+    "SerialNumber": "79",
+    "Assetcode": "123fdfsdf",
+    "Hardwarerows": {
+        "Model": "DL380",
+        "CPU": "2,6",
+        "RAM": "768"
     },
-    {
-        "CMDBName": "string",
-        "Function": "string",
-        "SerialNumber": "string",
-        "Assetcode": "string",
-        "Hardwarerows": {
-            "Model": "string",
-            "CPU": "string",
-            "RAM": "string"
+    "Localisationrows": {
+        "Room": "K",
+        "Building": "M88",
+        "Rack": "m88adcs4"
+    },
+    "Networksrows": [
+        {
+            "Ipaddr": "abc",
+            "Patchpanel": "abc",
+            "Serverport": "abc",
+            "Switch": "abc",
+            "Vlan": "abc",
+            "MAC": "abc"
         },
-        "Localisationrows": {
-            "Room": "string",
-            "Building": "string",
-            "Rack": "string"
+        {
+            "Ipaddr": "def",
+            "Patchpanel": "def",
+            "Serverport": "def",
+            "Switch": "def",
+            "Vlan": "def",
+            "MAC": "def"
         },
-        "Networksrows": [
-            {
-                "Ipaddr": "string",
-                "Patchpanel": "string",
-                "Serverport": "string",
-                "Switch": "string",
-                "Vlan": "string",
-                "MAC": "string"
-            }
-        ],
-        "Remarks": "string",
-        "Status": "string"
-    }
-]
+        {
+            "Ipaddr": "toto",
+            "Patchpanel": "patch",
+            "Serverport": "12",
+            "Switch": "switch",
+            "Vlan": "vlan",
+            "MAC": "mac"
+        }
+    ],
+    "Remarks": "MyRermarks",
+    "Status": "In Progress"
+}, {
+    "CMDBName": "string",
+    "Function": "string",
+    "SerialNumber": "string",
+    "Assetcode": "string",
+    "Hardwarerows": {
+        "Model": "string",
+        "CPU": "string",
+        "RAM": "string"
+    },
+    "Localisationrows": {
+        "Room": "string",
+        "Building": "string",
+        "Rack": "string"
+    },
+    "Networksrows": [
+        {
+            "Ipaddr": "string",
+            "Patchpanel": "string",
+            "Serverport": "string",
+            "Switch": "string",
+            "Vlan": "string",
+            "MAC": "string"
+        }
+    ],
+    "Remarks": "string",
+    "Status": "string"
+}]
