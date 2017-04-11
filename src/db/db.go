@@ -159,9 +159,11 @@ func Remove(id string) error {
 }
 
 // Func to remove network field from collection
+// TODO multi criteria in $pull    { $pull: { Networksrows: {  $elemMatch: { Ipaddr: Ipaddr, MAC: MAC } } } },
+
 func RemoveNetwork(id string, Ipaddr string) error {
-	change := bson.M{"$pull": bson.M{"Networksrows": bson.ObjectIdHex(Ipaddr)}}
+	change := bson.M{"$pull": bson.M{"Networksrows": Ipaddr}}
 	fmt.Println(id)
-	err := repo.collection.UpdateId(bson.ObjectIdHex(id), change)
+	err := collection().UpdateId(bson.ObjectIdHex(id), change)
 	return err
 }
