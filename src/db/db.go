@@ -157,3 +157,11 @@ func GetOne(id string) (*Server, error) {
 func Remove(id string) error {
 	return collection().Remove(bson.M{"_id": bson.ObjectIdHex(id)})
 }
+
+// Func to remove network field from collection
+func RemoveNetwork(id string, Ipaddr string) error {
+	change := bson.M{"$pull": bson.M{"Networksrows": bson.ObjectIdHex(Ipaddr)}}
+	fmt.Println(id)
+	err := repo.collection.UpdateId(bson.ObjectIdHex(id), change)
+	return err
+}
