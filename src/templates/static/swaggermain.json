@@ -54,7 +54,7 @@
         "tags": [
           "servers"
         ],
-        "summary": "Add servers",
+        "summary": "Add a server",
         "operationId": "createServer",
         "parameters": [
           {
@@ -65,6 +65,39 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/server"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/successAnswer"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/servers/import": {
+      "post": {
+        "description": "This will insert multiple servers.",
+        "tags": [
+          "servers"
+        ],
+        "summary": "Import / Add multiple Servers",
+        "operationId": "importServer",
+        "parameters": [
+          {
+            "x-go-name": "Server",
+            "description": "Server to submit",
+            "name": "multiserver",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/server"
+              }
             }
           }
         ],

@@ -79,6 +79,16 @@ type myServerBodyParams struct {
 	Server *db.Server `json:"server"`
 }
 
+// Server Multi
+// swagger:parameters  importServer
+type myMultipleServerBodyParams struct {
+	// Server to submit
+	//
+	// in: body
+	// required: true
+	Server *[]db.Server `json:"multiserver"`
+}
+
 // swagger:route GET /servers servers listServer
 //
 // Lists servers
@@ -110,7 +120,7 @@ func handleError(err error, message string, w http.ResponseWriter) {
 
 // swagger:route POST /servers servers createServer
 //
-// Add servers
+// Add a server
 //
 // This will register asset.
 //
@@ -274,7 +284,7 @@ func UpdateItem(w http.ResponseWriter, req *http.Request) {
 
 // swagger:route POST /servers/import servers importServer
 //
-// Import Servers
+// Import / Add multiple Servers
 //
 // This will insert multiple servers.
 //
@@ -292,7 +302,7 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		//handle error
 	}
-
+	// Loop for multiple of server included in JSON
 	for i := range server {
 		fmt.Println(server[i].CMDBName)
 		fmt.Println(server[i])
@@ -302,8 +312,4 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 		}
 
 	}
-	// if err := db.MultipleSave(decoder); err != nil {
-	// 	handleError(err, "Failed to save data: %v", w)
-	// 	return
-	// }
 }
