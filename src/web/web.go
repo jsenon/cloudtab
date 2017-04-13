@@ -174,6 +174,7 @@ func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 	id := vars["id"]
 
 	// Use gorilla schema packages that fills a struct with form values
+	// Really Used ?
 	decoder := schema.NewDecoder()
 	req.ParseForm()
 
@@ -188,30 +189,13 @@ func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 
 	// Take into account that ip is mandatory and always set
 	for i := range valuesip {
-		// fmt.Println("x:", x)
-		// fmt.Println("ipdynamique:", valuesip[i])
-		// fmt.Println("pp:", valuespp[i])
-		// fmt.Println("switch:", valuessw[i])
-		// fmt.Println("vlan:", valuesvlan[i])
-		// fmt.Println("mac:", valuesmac[i])
 		net := db.Networks{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}
 		fmt.Println("net:", net)
 		// item := db.Server{ID: bson.ObjectIdHex(id), Networking: []db.Networks{{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}}}
-		// if erro, err := db.Updatemain(id, item); err != nil && erro != nil {
-		// 	return
-		// }
 		if err := db.Update(id, "networking", net); err != nil {
 			return
 		}
 	}
-
-	// valuespp := req.Form["pp"]
-	// for i := range valuespp {
-	// 	fmt.Println("pp loop", valuespp[i])
-	// }
-
-	// We can write form to html
-	// fmt.Fprintln(res, req.Form)
 
 	err := decoder.Decode(&serverdecode, req.PostForm)
 	if err != nil {

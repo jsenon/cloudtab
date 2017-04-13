@@ -86,6 +86,7 @@ func main() {
 	r.HandleFunc("/api/servers/{id}", api.DeleteItem).Methods("DELETE")
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
 	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
+	r.HandleFunc("/api/servers/import", api.PostMultipleItems).Methods("POST")
 
 	// Static dir
 	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("templates/static/"))))

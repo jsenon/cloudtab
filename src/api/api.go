@@ -30,6 +30,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
+	"io/ioutil"
 	"time"
 	// "strconv"
 )
@@ -269,4 +270,40 @@ func UpdateItem(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	w.Write([]byte("OK"))
+}
+
+// swagger:route POST /servers/import servers importServer
+//
+// Import Servers
+//
+// This will insert multiple servers.
+//
+//     Responses:
+//       default: validationError
+//       200: successAnswer
+func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
+	body, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		panic(err)
+	}
+	var server []db.Server
+	err = json.Unmarshal(body, &server)
+	// fmt.Println("Body:", body)
+	if err != nil {
+		//handle error
+	}
+
+	for i := range server {
+		fmt.Println(server[i].CMDBName)
+		fmt.Println(server[i])
+		if err := db.Save(server[i]); err != nil {
+			handleError(err, "Failed to save data: %v", w)
+			return
+		}
+
+	}
+	// if err := db.MultipleSave(decoder); err != nil {
+	// 	handleError(err, "Failed to save data: %v", w)
+	// 	return
+	// }
 }

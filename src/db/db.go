@@ -139,7 +139,6 @@ func Updatemain(key string, item Server) (error, error) {
 	UpdateTime := time.Now()
 	erro := collection().Update(bson.M{"_id": bson.ObjectIdHex(key)}, bson.M{"$set": bson.M{"UpdateTime": UpdateTime}})
 	// fmt.Println(erro, UpdateTime)
-
 	return err, erro
 }
 
@@ -160,10 +159,15 @@ func Remove(id string) error {
 
 // Func to remove network field from collection
 // TODO multi criteria in $pull    { $pull: { Networksrows: {  $elemMatch: { Ipaddr: Ipaddr, MAC: MAC } } } },
-
 func RemoveNetwork(id string, Ipaddr string) error {
 	change := bson.M{"$pull": bson.M{"Networksrows": Ipaddr}}
-	fmt.Println(id)
+	// fmt.Println(id)
 	err := collection().UpdateId(bson.ObjectIdHex(id), change)
 	return err
+}
+
+// Func to add multiple server
+// JSON Struct is a slice of item JSON Server
+func MultipleSave(item []Server) error {
+	return collection().Insert(item)
 }
