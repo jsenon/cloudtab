@@ -80,7 +80,7 @@ API Swagger Doc
 - [x] Web part add network func
 - [ ] Web part delete network func
 - [x] API part Update
-- [ ] Import CSV
+- [x] Import 
 - [x] Detail Select Column to show
 - [ ] Unique fields in db
 - [x] Store multiple networks per asset
