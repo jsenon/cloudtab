@@ -35,9 +35,13 @@ docker exec -it cloudtab-mongo mongo admin
 
 ### API
 
-POST API
+POST API One Server
 ```sh
 curl -X POST  -H "Content-Type: application/json"  -d @body_example.json http://localhost:9010/api/servers
+```
+POST API Multiple Servers
+```sh
+curl -X POST  -H "Content-Type: application/json"  -d @body_example.json http://localhost:9010/api/servers/import
 ```
 GET API ALL
 ```sh
