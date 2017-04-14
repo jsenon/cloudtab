@@ -10,7 +10,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		
 		<style type="text/css">
-
 		.table {
 			    margin-top: 1rem;
 		}
@@ -40,22 +39,12 @@
 		}
 		</style>
 
+		<!-- JQuery for remove row on network table -->
 		<script type="text/javascript">
-		var room = 1;
-		function networks_fields() {
-			room++;
-			var objTo = document.getElementById('networks_fields')
-			var divtest = document.createElement("div");
-			divtest.setAttribute("class", "form-inline removeclass"+room);
-			var rdiv = 'removeclass'+room;
-			divtest.innerHTML = '<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ipdyn" id="ipdyn" value="toto" placeholder="ip"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="pp" value="pp" placeholder="pp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sp" value="sp" placeholder="sp"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="sw" value="sw" placeholder="sw"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlan" value="vlan" placeholder="vlan"><input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="mac" value="mac" placeholder="mac"><button class="btn btn-outline-danger" type="button" onclick="remove_networks_fields('+ room +');">-</button>';
-
-			objTo.appendChild(divtest)
-		}
-		function remove_networks_fields(rid) {
-		   $('.removeclass'+rid).remove();
-		}
-
+			function deleteRow(r) {
+			    var i = r.parentNode.parentNode.rowIndex;
+			    document.getElementById("Networktable").deleteRow(i);
+			}
 		</script>
 
 	</head>
@@ -139,7 +128,7 @@
 			<div class="col-md-12" style="text-align: left;" >
 				<fieldset>
 				<legend>Networks</legend>
-				<table style="width:100%">
+				<table id="Networktable" style="width:100%">
 				<tr>
 					<th> IP </th>
 					<th> Patch Panel </th>
@@ -168,6 +157,9 @@
 					<td>
 						<input id="Networking.MAC" placeholder="{{$element.MAC}}" type="text" name="Networking.{{$index}}.MAC" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{$element.MAC}}">
 					</td>
+					<td>
+						<button type="button" class="btn btn-outline-warning" value="Delete" onclick="deleteRow(this)">Delete</button>
+					</td>
 				</tr>
 				{{end}}
 				</table>
@@ -195,19 +187,6 @@
 				</br>
 			</div>
 
-			<!-- <div class="col-md-12" style="text-align: left;" >
-				<fieldset>
-					<legend>Add Network</legend>
-					<div id="networks_fields" class="form-inline">
-					</div>
-					<div class="form-group">
-						<button class="btn btn-outline-primary add-more" id="add-more" type="button" onclick="networks_fields();">+</button>
-					</div>
-					<div id="networks_fields" class="form-inline">
-					</div>
-					</br>
-				</fieldset>
-			</div> -->
 
 			<div class="col-md-8" style="text-align: left;" >
 				Created at: {{.InsertTime}}</br>
@@ -216,17 +195,12 @@
 				<a class="btn btn-outline-secondary" href="/details/{{.ID.Hex}}" role="button">Go Back</a>
 				<button class="btn btn-outline-primary" type="submit">Update</button>
 				<button class="btn btn-outline-danger" type="reset">Reset</button>
+				</br>
+				</br>
 			</div>
-			</br>
-
-
-			
-
 
 			</form>
 
-			</div>
-			</br>
 			<footer class="footer">
 	      		<div class="container">
 	        		<span class="text-muted">Made by Somebody.</span>
