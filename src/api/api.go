@@ -334,7 +334,7 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 //       200: statusjson
 func Statusamiup(w http.ResponseWriter, req *http.Request) {
 	answerjson := statusjson{
-		Code:    400,
+		Code:    200,
 		Message: "Im awake !",
 	}
 	b, err := json.Marshal(answerjson)
@@ -355,7 +355,7 @@ func Statusamiup(w http.ResponseWriter, req *http.Request) {
 //       200: statusjson
 func Statusabout(w http.ResponseWriter, req *http.Request) {
 	answerjson := statusjson{
-		Code:    400,
+		Code:    200,
 		Message: "Made by Somebody",
 	}
 	b, err := json.Marshal(answerjson)
