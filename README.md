@@ -94,6 +94,7 @@ API Swagger Doc
 - [x] API Doc
 - [ ] Build Docker App
 - [ ] Move to microservice (dockerize cloudtab and add redis)
+- [ ] Add API monitoring
 
 
 
