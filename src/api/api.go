@@ -323,7 +323,7 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-// swagger:route GET /status/am-i-up status amiup
+// swagger:route GET /healthy/am-i-up health amiup
 //
 // Check if service is ip and running
 //
@@ -344,7 +344,7 @@ func Statusamiup(w http.ResponseWriter, req *http.Request) {
 	w.Write(b)
 }
 
-// swagger:route GET /status/about status about
+// swagger:route GET /healthy/about health about
 //
 // Check if service is ip and running
 //

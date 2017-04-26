@@ -26,6 +26,42 @@
   "host": "localhost:9010",
   "basePath": "/api",
   "paths": {
+    "/healthy/about": {
+      "get": {
+        "description": "This will details for specific server.",
+        "tags": [
+          "health"
+        ],
+        "summary": "Check if service is ip and running",
+        "operationId": "about",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/healthy/am-i-up": {
+      "get": {
+        "description": "This will details for specific server.",
+        "tags": [
+          "health"
+        ],
+        "summary": "Check if service is ip and running",
+        "operationId": "amiup",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
     "/servers": {
       "get": {
         "description": "This will show all available asset by default.",
@@ -200,42 +236,6 @@
         "responses": {
           "200": {
             "$ref": "#/responses/successAnswer"
-          },
-          "default": {
-            "$ref": "#/responses/validationError"
-          }
-        }
-      }
-    },
-    "/status/about": {
-      "get": {
-        "description": "This will details for specific server.",
-        "tags": [
-          "status"
-        ],
-        "summary": "Check if service is ip and running",
-        "operationId": "about",
-        "responses": {
-          "200": {
-            "$ref": "#/responses/statusjson"
-          },
-          "default": {
-            "$ref": "#/responses/validationError"
-          }
-        }
-      }
-    },
-    "/status/am-i-up": {
-      "get": {
-        "description": "This will details for specific server.",
-        "tags": [
-          "status"
-        ],
-        "summary": "Check if service is ip and running",
-        "operationId": "amiup",
-        "responses": {
-          "200": {
-            "$ref": "#/responses/statusjson"
           },
           "default": {
             "$ref": "#/responses/validationError"

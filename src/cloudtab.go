@@ -87,12 +87,12 @@ func main() {
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
 	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 	r.HandleFunc("/api/servers/import", api.PostMultipleItems).Methods("POST")
-	r.HandleFunc("/api/status/am-i-up", api.Statusamiup).Methods("GET")
-	r.HandleFunc("/api/status/about", api.Statusabout).Methods("GET")
+	r.HandleFunc("/api/healthy/am-i-up", api.Statusamiup).Methods("GET")
+	r.HandleFunc("/api/healthy/about", api.Statusabout).Methods("GET")
 
 	// Health Check
-	r.HandleFunc("/status/am-i-up", api.Statusamiup).Methods("GET")
-	r.HandleFunc("/status/about", api.Statusabout).Methods("GET")
+	r.HandleFunc("/healthy/am-i-up", api.Statusamiup).Methods("GET")
+	r.HandleFunc("/healthy/about", api.Statusabout).Methods("GET")
 
 	// Static dir
 	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("templates/static/"))))
