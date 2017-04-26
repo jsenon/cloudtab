@@ -217,7 +217,7 @@
         "operationId": "about",
         "responses": {
           "200": {
-            "$ref": "#/responses/statusaboutjson"
+            "$ref": "#/responses/statusjson"
           },
           "default": {
             "$ref": "#/responses/validationError"

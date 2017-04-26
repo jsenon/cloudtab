@@ -352,7 +352,7 @@ func Statusamiup(w http.ResponseWriter, req *http.Request) {
 //
 //     Responses:
 //       default: validationError
-//       200: statusaboutjson
+//       200: statusjson
 func Statusabout(w http.ResponseWriter, req *http.Request) {
 	answerjson := statusjson{
 		Code:    400,
