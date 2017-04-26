@@ -60,13 +60,22 @@ type successAnswer struct {
 }
 
 // Server id
-// swagger:parameters deleteServer getServerById updateServer amiup about
+// swagger:parameters deleteServer getServerById updateServer
 type id struct {
 	// id Server Generated
 	//
 	// in: path
 	// required: true
 	ID int64 `json:"id"`
+}
+
+// Status Answer
+// swagger:response statusjson
+type statusjson struct {
+	// The Status message
+	// in: body
+	Code    int32  `json:"statuscode"`
+	Message string `json:"statusmessage"`
 }
 
 // Server Param
@@ -322,9 +331,17 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 //
 //     Responses:
 //       default: validationError
-//       200: successAnswer
+//       200: statusjson
 func Statusamiup(w http.ResponseWriter, req *http.Request) {
-
+	answerjson := statusjson{
+		Code:    400,
+		Message: "Im awake !",
+	}
+	b, err := json.Marshal(answerjson)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	w.Write(b)
 }
 
 // swagger:route GET /status/about status about
@@ -335,7 +352,15 @@ func Statusamiup(w http.ResponseWriter, req *http.Request) {
 //
 //     Responses:
 //       default: validationError
-//       200: successAnswer
+//       200: statusaboutjson
 func Statusabout(w http.ResponseWriter, req *http.Request) {
-
+	answerjson := statusjson{
+		Code:    400,
+		Message: "Made by Somebody",
+	}
+	b, err := json.Marshal(answerjson)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	w.Write(b)
 }
