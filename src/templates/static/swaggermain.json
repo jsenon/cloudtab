@@ -28,11 +28,11 @@
   "paths": {
     "/healthy/about": {
       "get": {
-        "description": "This will details for specific server.",
+        "description": "This will details status availability",
         "tags": [
           "health"
         ],
-        "summary": "Check if service is ip and running",
+        "summary": "Check service availability",
         "operationId": "about",
         "responses": {
           "200": {
@@ -46,11 +46,11 @@
     },
     "/healthy/am-i-up": {
       "get": {
-        "description": "This will details for specific server.",
+        "description": "This will sent information if service is up and running.",
         "tags": [
           "health"
         ],
-        "summary": "Check if service is ip and running",
+        "summary": "Check if Health of platform",
         "operationId": "amiup",
         "responses": {
           "200": {

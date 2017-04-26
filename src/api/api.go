@@ -325,9 +325,9 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 
 // swagger:route GET /healthy/am-i-up health amiup
 //
-// Check if service is ip and running
+// Check if Health of platform
 //
-// This will details for specific server.
+// This will sent information if service is up and running.
 //
 //     Responses:
 //       default: validationError
@@ -346,9 +346,9 @@ func Statusamiup(w http.ResponseWriter, req *http.Request) {
 
 // swagger:route GET /healthy/about health about
 //
-// Check if service is ip and running
+// Check service availability
 //
-// This will details for specific server.
+// This will details status availability
 //
 //     Responses:
 //       default: validationError
