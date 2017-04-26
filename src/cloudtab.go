@@ -87,6 +87,8 @@ func main() {
 	r.HandleFunc("/api/servers/{id}", api.GetItem).Methods("GET")
 	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 	r.HandleFunc("/api/servers/import", api.PostMultipleItems).Methods("POST")
+	r.HandleFunc("/api/status/am-i-up", api.Statusamiup).Methods("GET")
+	r.HandleFunc("/api/status/about", api.Statusabout).Methods("GET")
 
 	// Health Check
 	r.HandleFunc("/status/am-i-up", api.Statusamiup).Methods("GET")
