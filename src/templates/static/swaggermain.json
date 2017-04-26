@@ -206,6 +206,42 @@
           }
         }
       }
+    },
+    "/status/about": {
+      "get": {
+        "description": "This will details for specific server.",
+        "tags": [
+          "status"
+        ],
+        "summary": "Check if service is ip and running",
+        "operationId": "about",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusaboutjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/status/am-i-up": {
+      "get": {
+        "description": "This will details for specific server.",
+        "tags": [
+          "status"
+        ],
+        "summary": "Check if service is ip and running",
+        "operationId": "amiup",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -349,6 +385,14 @@
     }
   },
   "responses": {
+    "statusjson": {
+      "description": "Status Answer",
+      "headers": {
+        "statusmessage": {
+          "type": "string"
+        }
+      }
+    },
     "successAnswer": {
       "description": "Success Answer",
       "schema": {
