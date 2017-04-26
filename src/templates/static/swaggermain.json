@@ -50,7 +50,7 @@
         "tags": [
           "health"
         ],
-        "summary": "Check if Health of platform",
+        "summary": "Check health of platform",
         "operationId": "amiup",
         "responses": {
           "200": {

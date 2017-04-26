@@ -325,7 +325,7 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 
 // swagger:route GET /healthy/am-i-up health amiup
 //
-// Check if Health of platform
+// Check health of platform
 //
 // This will sent information if service is up and running.
 //
