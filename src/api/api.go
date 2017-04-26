@@ -323,7 +323,7 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 //     Responses:
 //       default: validationError
 //       200: successAnswer
-func statusamiup(w http.ResponseWriter, req *http.Request) {
+func Statusamiup(w http.ResponseWriter, req *http.Request) {
 
 }
 
@@ -336,6 +336,6 @@ func statusamiup(w http.ResponseWriter, req *http.Request) {
 //     Responses:
 //       default: validationError
 //       200: successAnswer
-func statusabout(w http.ResponseWriter, req *http.Request) {
+func Statusabout(w http.ResponseWriter, req *http.Request) {
 
 }
