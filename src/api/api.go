@@ -60,7 +60,7 @@ type successAnswer struct {
 }
 
 // Server id
-// swagger:parameters deleteServer getServerById updateServer
+// swagger:parameters deleteServer getServerById updateServer amiup about
 type id struct {
 	// id Server Generated
 	//
@@ -312,4 +312,30 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 		}
 
 	}
+}
+
+// swagger:route GET /status/am-i-up status amiup
+//
+// Check if service is ip and running
+//
+// This will details for specific server.
+//
+//     Responses:
+//       default: validationError
+//       200: successAnswer
+func statusamiup(w http.ResponseWriter, req *http.Request) {
+
+}
+
+// swagger:route GET /status/about status about
+//
+// Check if service is ip and running
+//
+// This will details for specific server.
+//
+//     Responses:
+//       default: validationError
+//       200: successAnswer
+func statusabout(w http.ResponseWriter, req *http.Request) {
+
 }

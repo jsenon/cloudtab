@@ -88,6 +88,10 @@ func main() {
 	r.HandleFunc("/api/servers/{id}", api.UpdateItem).Methods("PATCH")
 	r.HandleFunc("/api/servers/import", api.PostMultipleItems).Methods("POST")
 
+	// Health Check
+	r.HandleFunc("/status/am-i-up", api.statusamiup).Methods("GET")
+	r.HandleFunc("/status/about", api.statusabout).Methods("GET")
+
 	// Static dir
 	r.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("templates/static/"))))
 
