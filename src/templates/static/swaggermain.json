@@ -157,8 +157,7 @@
         "operationId": "getServerById",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
+            "type": "string",
             "x-go-name": "ID",
             "description": "id Server Generated",
             "name": "id",
@@ -187,8 +186,7 @@
         "operationId": "deleteServer",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
+            "type": "string",
             "x-go-name": "ID",
             "description": "id Server Generated",
             "name": "id",
@@ -214,8 +212,7 @@
         "operationId": "updateServer",
         "parameters": [
           {
-            "type": "integer",
-            "format": "int64",
+            "type": "string",
             "x-go-name": "ID",
             "description": "id Server Generated",
             "name": "id",
