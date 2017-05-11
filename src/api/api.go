@@ -69,6 +69,15 @@ type id struct {
 	ID string `json:"id"`
 }
 
+// Status Answer
+// swagger:response statusjson
+type statusjson struct {
+	// The Status message
+	// in: body
+	Code    int32  `json:"statuscode"`
+	Message string `json:"statusmessage"`
+}
+
 // Server Param
 // swagger:parameters createServer updateServer
 type myServerBodyParams struct {
@@ -312,4 +321,46 @@ func PostMultipleItems(w http.ResponseWriter, req *http.Request) {
 		}
 
 	}
+}
+
+// swagger:route GET /healthy/am-i-up health amiup
+//
+// Check health of platform
+//
+// This will sent information if service is up and running.
+//
+//     Responses:
+//       default: validationError
+//       200: statusjson
+func Statusamiup(w http.ResponseWriter, req *http.Request) {
+	answerjson := statusjson{
+		Code:    200,
+		Message: "Im awake !",
+	}
+	b, err := json.Marshal(answerjson)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	w.Write(b)
+}
+
+// swagger:route GET /healthy/about health about
+//
+// Check service availability
+//
+// This will details status availability
+//
+//     Responses:
+//       default: validationError
+//       200: statusjson
+func Statusabout(w http.ResponseWriter, req *http.Request) {
+	answerjson := statusjson{
+		Code:    200,
+		Message: "Made by Somebody",
+	}
+	b, err := json.Marshal(answerjson)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	w.Write(b)
 }

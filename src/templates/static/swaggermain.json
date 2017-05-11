@@ -26,6 +26,42 @@
   "host": "localhost:9010",
   "basePath": "/api",
   "paths": {
+    "/healthy/about": {
+      "get": {
+        "description": "This will details status availability",
+        "tags": [
+          "health"
+        ],
+        "summary": "Check service availability",
+        "operationId": "about",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
+    "/healthy/am-i-up": {
+      "get": {
+        "description": "This will sent information if service is up and running.",
+        "tags": [
+          "health"
+        ],
+        "summary": "Check health of platform",
+        "operationId": "amiup",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/statusjson"
+          },
+          "default": {
+            "$ref": "#/responses/validationError"
+          }
+        }
+      }
+    },
     "/servers": {
       "get": {
         "description": "This will show all available asset by default.",
@@ -349,6 +385,14 @@
     }
   },
   "responses": {
+    "statusjson": {
+      "description": "Status Answer",
+      "headers": {
+        "statusmessage": {
+          "type": "string"
+        }
+      }
+    },
     "successAnswer": {
       "description": "Success Answer",
       "schema": {
