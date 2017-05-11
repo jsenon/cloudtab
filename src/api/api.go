@@ -66,7 +66,7 @@ type id struct {
 	//
 	// in: path
 	// required: true
-	ID int64 `json:"id"`
+	ID string `json:"id"`
 }
 
 // Server Param
