@@ -185,11 +185,13 @@ func SendNetUpdate(res http.ResponseWriter, req *http.Request) {
 	valuessw := req.Form["sw"]
 	valuesvlan := req.Form["vlan"]
 	valuesmac := req.Form["mac"]
-	serverport := "12"
+	valueport := req.Form["sport"]
+
+	// serverport := "12"
 
 	// Take into account that ip is mandatory and always set
 	for i := range valuesip {
-		net := db.Networks{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}
+		net := db.Networks{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: valueport[i], Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}
 		fmt.Println("net:", net)
 		// item := db.Server{ID: bson.ObjectIdHex(id), Networking: []db.Networks{{IpAddr: valuesip[i], PatchPanel: valuespp[i], ServerPort: serverport, Switch: valuessw[i], Vlan: valuesvlan[i], MAC: valuesmac[i]}}}
 		if err := db.Update(id, "networking", net); err != nil {
